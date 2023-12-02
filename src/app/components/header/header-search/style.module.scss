@@ -1,0 +1,33 @@
+.input{
+  width: 300px;
+  height: 40px;
+
+  @apply rounded-lg bg-violet-900;
+  background-clip: padding-box;
+  backdrop-filter: blur(20px);
+
+  padding: 10px 30px 10px 5px;
+  &:focus{
+    outline: none;
+    @apply  bg-violet-700;
+    box-shadow: 0 0 10px #6d28d9;
+  }
+}
+.text_invisible{
+  transition: visibility .1s ease, background-color .2s ease,height .3s ease;
+}
+.text_invisible::-webkit-scrollbar {
+  width: 8px; /* ширина всей полосы прокрутки */
+}
+.text_invisible::-webkit-scrollbar-track {
+  /* цвет зоны отслеживания */
+  @apply bg-white/50;
+  border-radius: 5px;
+}
+
+.text_invisible::-webkit-scrollbar-thumb {
+  background: #480472; /* цвет бегунка */
+  height: 20px;
+  border-radius: 5px
+
+}

@@ -1,0 +1,40 @@
+.menu_burger{
+  @apply w-[30px] h-[20px] relative overflow-hidden cursor-pointer ;
+}
+.menu_burger > span,
+.menu_burger::before,
+.menu_burger::after{
+  content: '';
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 3px;
+  //margin: 5px 0;
+  background: #8E54E9;
+  transition: .3s ease-in-out;
+}
+.menu_burger > span{
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+}
+.menu_burger::before {
+  content: '';
+  top: 0px;
+}
+.menu_burger::after {
+  content: '';
+  bottom: 0px;
+}
+.menu_burger._active::after {
+  transform: rotate(-45deg) translateY(50%);
+  bottom: 50%;
+}
+.menu_burger._active::before {
+  transform: rotate(45deg) translateY(-50%);
+  top: 50%;
+
+}
+.menu_burger._active >span{
+  left: -100%;
+}

@@ -1,0 +1,68 @@
+.wrapper_layout{
+  display: flex;
+  flex: 1 1 0;
+  flex-direction: column;
+}
+.bg_slide{
+  background: rgba(26,33,64,1);
+  //background-image: linear-gradient( 94.3deg,  rgba(26,33,64,1) 40.9%, rgba(81,84,115,1) 87.1% );
+  @apply ease-in-out duration-300;
+  &:hover{
+    background-image: linear-gradient( 94.3deg,  rgba(81,84,115,1) 40.9%, rgb(39, 61, 150) 87.1% );
+  }
+}
+.card{
+  box-shadow: 0px 0px 8px 4px rgba(149, 47, 249, 0.4);
+  transition: .3s ease-in-out;
+  &:hover{
+    box-shadow: 0px 0px 8px 4px rgba(149, 47, 249, 0.4) inset;
+  }
+}
+.game_info {
+  background: transparent;
+  backdrop-filter: blur(0);
+  transition: left .3s ease-in-out, visibility .3s ease-in-out; /* Добавлено свойство visibility в transition */
+  position: absolute;
+  left: -100%;
+  top: 0;
+  width: 0;
+  height: 0;
+  opacity: 0;
+}
+@media (min-width: 768px) {
+  .img:hover .game_info {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    transition: left .3s ease-out, visibility .3s ease-out; /* Добавлено свойство visibility в transition */
+    background: rgba(30, 58, 138, 0.66);
+    backdrop-filter: blur(10px);
+    display: flex;
+    flex-direction: column;
+    padding: 10px 5px;
+    z-index: 100;
+    opacity: 1;
+  }
+}
+.card_info{
+  @apply relative px-1 w-full ease-linear duration-300 max-h-full  flex flex-1  flex-col  backdrop-blur;
+  background: #141e30;
+  background: linear-gradient(to right, #141e30, #243b55);
+}
+
+.card_art{
+  @apply flex flex-1 flex-col  ease-in-out duration-300;
+
+  transition: .3s ease-in-out;
+  &:hover  img{
+    transition: .3s ease-in-out;
+    transform: scale(1.1);
+  }
+}
+.circle_rating{
+  border-radius: 50%;
+  background-color: #f0f0f0; /* Цвет круга */
+  transition: width 0.5s, height 0.5s;
+}
