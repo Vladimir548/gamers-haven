@@ -55,11 +55,6 @@
 .card_art{
   @apply flex flex-1 flex-col  ease-in-out duration-300;
 
-  transition: .3s ease-in-out;
-  &:hover  img{
-    transition: .3s ease-in-out;
-    transform: scale(1.1);
-  }
 }
 .circle_rating{
   border-radius: 50%;

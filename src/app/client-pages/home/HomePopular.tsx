@@ -2,8 +2,7 @@
 import { useQuery } from '@tanstack/react-query';
 import { QueryHome } from '@/app/query/query-home';
 import SwiperLayoutCategory from '@/app/client-pages/swiper/SwiperLayoutCategory';
-import { useEffect, useState } from 'react';
-import { GamesResponse } from '@/interface/games/interface-games';
+
 export default function HomePopular() {
   const { data, isLoading, isSuccess } = useQuery({
     queryKey: ['home-popular'],
@@ -11,7 +10,16 @@ export default function HomePopular() {
   });
   return (
     <div className={'flex flex-col'}>
-      <SwiperLayoutCategory isLoading={isSuccess} data={data} title={'Popular'} typeImage={'art'} />
+      {isSuccess ? (
+        <SwiperLayoutCategory
+          isLoading={isLoading}
+          data={data}
+          title={'Popular'}
+          typeImage={'art'}
+        />
+      ) : (
+        '  loading... popular'
+      )}
     </div>
   );
 }

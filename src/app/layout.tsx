@@ -32,7 +32,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 <main className={'relative w-full '}>
                   <Header />
 
-                  <div className="px-2">{children}</div>
+                  <div className="px-2">
+                    <Suspense fallback={<Loading />}>{children}</Suspense>
+                  </div>
                   <div className="mt-[50px] md:mt-0">
                     <NavigationBottom />
                   </div>

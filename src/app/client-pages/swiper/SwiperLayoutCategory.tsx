@@ -5,16 +5,16 @@ import 'swiper/css';
 import style from './style.module.scss';
 import './styles.css';
 import Image from '@/app/components/image/Image';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef } from 'react';
 import { GamesResponse } from '@/interface/games/interface-games';
 import Link from 'next/link';
 import cn from 'classnames';
 import SwiperButtonNavigation from '@/app/client-pages/swiper/SwiperButtonNavigation';
 import { motion, AnimatePresence } from 'framer-motion';
-import CircularProgressBar from '@/app/components/circular-progress-bar/CircularProgressBar';
-import { getAuthToken } from '@/app/query/query-auth';
-import { FaStar } from 'react-icons/fa';
 
+import { FaStar } from 'react-icons/fa';
+import Skeleton from 'react-loading-skeleton';
+import 'react-loading-skeleton/dist/skeleton.css';
 interface ISwiperLayout {
   data?: GamesResponse;
   title: string;
@@ -119,22 +119,30 @@ export default function SwiperLayoutCategory({ data, title, typeImage, isLoading
                   </>
                 )}
                 {typeImage === 'art' && (
-                  <div className={style.card_art}>
+                  <div className={cn('', style.card_art)}>
                     <Image
+                      isLoading={isLoading}
                       image_id={game.artworks && game.artworks[0].image_id}
                       size={'screenshot_med'}
-                      styleName={'rounded-t-lg object-cover flex-1 h-max'}
-                      quality={80}
+                      styleName={
+                        'rounded-t-lg object-cover ease-in-out duration-300 flex-1 h-max hover:blur-md '
+                      }
+                      quality={70}
                       ratio={16 / 9}
                     />
+
                     <div className={style.card_info}>
-                      <h2
-                        className={
-                          ' title_card flex flex-1   md:overflow_line_two ms:whitespace-nowrap overflow-hidden text-ellipsis    '
-                        }
-                      >
-                        {game.name}
-                      </h2>
+                      {isLoading ? (
+                        <Skeleton count={1} />
+                      ) : (
+                        <h2
+                          className={
+                            ' title_card flex flex-1 ease-in-out duration-300   md:overflow_line_two ms:whitespace-nowrap overflow-hidden text-ellipsis    '
+                          }
+                        >
+                          {game.name}
+                        </h2>
+                      )}
                       <div className="flex items-center justify-between">
                         {game?.genres && (
                           <div className="whitespace-nowrap overflow-hidden text-ellipsis md:text-sm ms:text-[10px] ">

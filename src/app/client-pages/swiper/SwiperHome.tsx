@@ -39,11 +39,11 @@ export default function SwiperHome() {
             slidesPerView: 1,
           },
         }}
-        // autoplay={{
-        //   delay: 5000,
-        //   disableOnInteraction: false,
-        // }}
-        modules={[Pagination, Autoplay]}
+        autoplay={{
+          delay: 5000,
+          disableOnInteraction: false,
+        }}
+        modules={[Autoplay]}
         pagination={{
           clickable: true,
         }}
@@ -60,14 +60,13 @@ export default function SwiperHome() {
             />
             <div
               style={{
-                backgroundColor: `rgba(${game?.palettes[0]?.colors.join(',')},.8)`,
-                boxShadow: `0px 0px 20px rgb(${game!.palettes[0]!.colors.join(',')})`,
+                backgroundColor: `rgba(${game?.palettes[0]?.colors.join(',')},.4)`,
               }}
-              className="absolute left-0 top-0 w-full h-full  z-10 backdrop-blur-[0px] rounded-lg overflow-hidden"
+              className={`absolute left-0 bottom-0 w-full h-full  z-10 backdrop-blur-[5px] ease-in-out duration-300  rounded-lg overflow-hidden hover:backdrop-blur-[15px]`}
             >
-              <div className="flex justify-items-start items-center  px-3 py-2 h-full ">
+              <div className="flex justify-items-start w-full  items-end  px-3 py-2 h-full ">
                 <div className="flex flex-col gap-y-2">
-                  <h2 className={'flex text-white title'}>{game.name}</h2>
+                  <h2 className={'flex text-white title font-bold'}>{game.name}</h2>
                   <div className="flex flex-wrap gap-x-2">
                     {game.genres?.map((genre) => (
                       <span className={' my-0.5  title_type '} key={genre.id}>

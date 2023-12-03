@@ -8,16 +8,14 @@ import HomeMultiplayer from '@/app/client-pages/home/HomeMultiplayer';
 import { Suspense } from 'react';
 import dynamic from 'next/dynamic';
 import HomeMobileGames from '@/app/client-pages/home/HomeMobileGames';
-const DynamicSwiperHome = dynamic(() => import('@/app/client-pages/swiper/SwiperHome'));
+const DynamicSwiperHome = dynamic(() => import('@/app/client-pages/swiper/SwiperHome'), {
+  loading: () => <p className={'fixed left-0 top-0 w-full h-full bg-violet-900'}>Loading...</p>,
+});
 export default function Home() {
   return (
     <div>
       <div className="">
-        <Suspense
-          fallback={<div className={'absolute left-1/2 top-1/2 z-50 text-white'}>Loading</div>}
-        >
-          <DynamicSwiperHome />
-        </Suspense>
+        <DynamicSwiperHome />
       </div>
       <div className="">
         <HomePopular />
