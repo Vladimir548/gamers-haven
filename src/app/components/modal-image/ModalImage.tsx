@@ -47,7 +47,6 @@ export default function ModalImage({ image, images, currentId }: IModalImage) {
   //   };
   // }, [isOpen]);
 
-
   const plusIndex = () => {
     // @ts-ignore
     if (current >= images?.length - 1) {
@@ -66,7 +65,7 @@ export default function ModalImage({ image, images, currentId }: IModalImage) {
 
   return (
     <div>
-      <Dialog.Root open={isOpen} onOpenChange={() => setIsOpen((prev) => !prev);}>
+      <Dialog.Root open={isOpen} onOpenChange={() => setIsOpen((prev) => !prev)}>
         <Dialog.Trigger asChild>
           <div className={style.increase}>
             <FaSearchPlus size={48} />
