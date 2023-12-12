@@ -7,8 +7,7 @@ import Header from '@/app/components/header/Header';
 import ReduxProvider from '@/providers/ProviderRedux';
 
 import ProviderNextUi from '@/providers/ProviderNextUI';
-import { Suspense } from 'react';
-import Loading from '@/app/loading';
+
 import NavigationBottom from '@/app/components/navigation-bottom/NavigationBottom';
 
 const noto = Noto_Serif({ subsets: ['latin'] });
@@ -20,7 +19,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" className={'bg-black'}>
       <body className={noto.className}>
         <QueryProviders>
           <ReduxProvider>
@@ -32,9 +31,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 <main className={'relative w-full '}>
                   <Header />
 
-                  <div className="px-2">
-                    <Suspense fallback={<Loading />}>{children}</Suspense>
-                  </div>
+                  <div className=" px-0 md:px-2">{children}</div>
                   <div className="mt-[50px] md:mt-0">
                     <NavigationBottom />
                   </div>

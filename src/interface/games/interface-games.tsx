@@ -38,7 +38,7 @@ export interface Games {
   keywords?: number[];
   multiplayer_modes?: number[];
   player_perspectives?: number[];
-  videos?: number[];
+  videos?: Video[];
   ports?: number[];
   collections?: number[];
   hypes?: number;
@@ -58,7 +58,13 @@ interface Palette {
   imgUrl?: string;
   colors: (number[] | undefined)[];
 }
-
+export interface Video {
+  checksum: string;
+  game: number;
+  id: number;
+  name: string;
+  video_id: string;
+}
 export interface Cover {
   id: number;
   url: string;

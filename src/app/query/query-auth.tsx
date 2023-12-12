@@ -3,7 +3,6 @@ import axios from 'axios';
 
 let accessToken = '';
 let expressIn = 0;
-console.log(accessToken);
 export async function getAuthToken() {
   try {
     const { data } = await axios.post<IAuthToken>(

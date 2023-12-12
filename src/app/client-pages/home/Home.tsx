@@ -1,4 +1,4 @@
-// import SwiperHome from '@/app/client-pages/swiper/SwiperHome';
+import SwiperHome from '@/app/client-pages/swiper/SwiperHome';
 import HomePopular from '@/app/client-pages/home/HomePopular';
 import HomeEvents from '@/app/client-pages/home/HomeEvents';
 import ComingSoon from '@/app/client-pages/home/ComingSoon';
@@ -8,9 +8,7 @@ import HomeMultiplayer from '@/app/client-pages/home/HomeMultiplayer';
 import { Suspense } from 'react';
 import dynamic from 'next/dynamic';
 import HomeMobileGames from '@/app/client-pages/home/HomeMobileGames';
-const DynamicSwiperHome = dynamic(() => import('@/app/client-pages/swiper/SwiperHome'), {
-  loading: () => <p className={'fixed left-0 top-0 w-full h-full bg-violet-900'}>Loading...</p>,
-});
+const DynamicSwiperHome = dynamic(() => import('@/app/client-pages/swiper/SwiperHome'));
 export default function Home() {
   return (
     <div>

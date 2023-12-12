@@ -80,7 +80,7 @@ export default function SwiperLayoutCategory({ data, title, typeImage, isLoading
             >
               <Link
                 key={game.id}
-                href={'/ff'}
+                href={`/game/${game.id}`}
                 className={cn('flex flex-col w-full h-full rounded-lg', style.img)}
               >
                 {typeImage === 'poster' && (

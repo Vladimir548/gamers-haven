@@ -21,7 +21,7 @@ export default function ImageCustom({
   isLoading,
 }: IImage) {
   return (
-    <div className={'w-full h-full   flex-1'}>
+    <div className={'w-full h-full relative   flex-1'}>
       <AspectRatio.Root ratio={ratio}>
         <NextImage
           src={`https://images.igdb.com/igdb/image/upload/t_${size}/${image_id}.jpg`}

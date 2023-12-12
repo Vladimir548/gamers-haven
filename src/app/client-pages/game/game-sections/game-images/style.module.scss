@@ -1,0 +1,9 @@
+.increase{
+  @apply absolute  left-0 overflow-hidden top-0 cursor-pointer
+  w-full h-full bg-black/30 backdrop-blur hidden justify-center items-center rounded-lg ease-in-out duration-300 ;
+}
+.slide{
+  &:hover .increase{
+    display:flex ;
+  }
+}
