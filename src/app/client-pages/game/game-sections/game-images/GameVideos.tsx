@@ -1,11 +1,13 @@
 import { Video } from '@/interface/games/interface-games';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
-// Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/navigation';
 import '@/app/client-pages/swiper/styles.css';
-import { Navigation } from 'swiper/modules';
+import { Navigation, Pagination } from 'swiper/modules';
+import ReactPlayer from 'react-player/youtube';
+
+import 'swiper/css/pagination';
 interface IGameVideos {
   videos: Video[] | undefined;
 }
@@ -14,7 +16,8 @@ export default function GameVideos({ videos }: IGameVideos) {
     <div>
       <Swiper
         navigation={true}
-        modules={[Navigation]}
+        pagination={true}
+        modules={[Navigation, Pagination]}
         className="mySwiper "
         slidesPerView={2}
         spaceBetween={10}
@@ -29,12 +32,11 @@ export default function GameVideos({ videos }: IGameVideos) {
       >
         {videos?.map((video) => (
           <SwiperSlide key={video.id}>
-            <iframe
-              className={'max-w-full'}
-              id="ytplayer"
+            <ReactPlayer
               width="100%"
-              height="100%"
-              src={`http://www.youtube.com/embed/${video.video_id}?showinfo=0&modestbranding=1&rel=0&allowfullscreen="0"`}
+              controls={true}
+              light={true}
+              url={`https://www.youtube.com/watch?v=${video.video_id}`}
             />
           </SwiperSlide>
         ))}

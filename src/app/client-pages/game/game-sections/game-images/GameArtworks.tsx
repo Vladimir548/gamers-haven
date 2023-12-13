@@ -4,11 +4,12 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import '@/app/client-pages/swiper/styles.css';
-import { Navigation } from 'swiper/modules';
+import { Navigation, Pagination } from 'swiper/modules';
 import ImageCustom from '@/app/components/image/Image';
 import ModalImage from '@/app/components/modal-image/ModalImage';
 import style from './style.module.scss';
 import { useState } from 'react';
+import 'swiper/css/pagination';
 interface IGameArtwork {
   artworks: artwork[] | undefined;
 }
@@ -26,7 +27,8 @@ export default function GameArtworks({ artworks }: IGameArtwork) {
       <div>
         <Swiper
           navigation={true}
-          modules={[Navigation]}
+          pagination={true}
+          modules={[Navigation, Pagination]}
           className="mySwiper "
           slidesPerView={2}
           spaceBetween={10}

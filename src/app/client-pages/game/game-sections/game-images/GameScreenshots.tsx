@@ -3,13 +3,14 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/navigation';
-import { Navigation } from 'swiper/modules';
+import { Navigation, Pagination } from 'swiper/modules';
 import ImageCustom from '@/app/components/image/Image';
 import { screenshot } from '@/interface/games/interface-games';
 import '@/app/client-pages/swiper/styles.css';
 import style from './style.module.scss';
 import ModalImage from '@/app/components/modal-image/ModalImage';
 import { useState } from 'react';
+import 'swiper/css/pagination';
 interface IGameScreenshot {
   screenshots: screenshot[] | undefined;
 }
@@ -26,7 +27,8 @@ export default function GameScreenshots({ screenshots }: IGameScreenshot) {
       <div>
         <Swiper
           navigation={true}
-          modules={[Navigation]}
+          pagination={true}
+          modules={[Navigation, Pagination]}
           className="mySwiper "
           slidesPerView={2}
           spaceBetween={10}

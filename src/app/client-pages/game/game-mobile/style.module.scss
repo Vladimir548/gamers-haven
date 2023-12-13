@@ -12,7 +12,11 @@
 .game_types{
   font-size: 12px;
     opacity: .7;
-
+    border: 1px solid #fff;
+  padding: 5px;
+  border-radius: 30px;
   margin: 5px;
-
+}
+.title{
+  @apply text-xl
 }

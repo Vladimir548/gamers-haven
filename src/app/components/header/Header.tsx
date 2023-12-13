@@ -14,7 +14,7 @@ export default function Header() {
   const marginBottom = useTransform(scrollY, [0, 100], ['0px', '0px']);
 
   return (
-    <div className={'h-[60px] w-full'}>
+    <div className={'h-[60px] w-full hidden md:block'}>
       <motion.div
         style={{ position, background, backdropFilter, marginBottom }}
         className={` z-[999] left-0 top-0 flex items-center   ease-in-out duration-300   w-full h-[60px]  px-1 `}

@@ -57,6 +57,11 @@
     .swiper-button-next, .swiper-button-prev {
         display: none;
     }
-
-
+}
+.swiper-pagination-bullet{
+    background: #f30808 !important;
+    opacity: .8 !important;
+}
+.swiper-pagination-bullet-active{
+    background: #9500ff !important;
 }

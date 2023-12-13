@@ -1,5 +1,4 @@
 'use client';
-import { useEffect, useState } from 'react';
 import { CircularProgress } from '@nextui-org/react';
 
 interface ICircular {

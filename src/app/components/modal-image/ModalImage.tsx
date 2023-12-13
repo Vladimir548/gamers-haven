@@ -6,6 +6,7 @@ import { FaSearchPlus } from 'react-icons/fa';
 import { artwork } from '@/interface/games/interface-games';
 import { SlArrowLeft, SlArrowRight } from 'react-icons/sl';
 import style from '@/app/client-pages/game/game-sections/game-images/style.module.scss';
+
 interface IModalImage {
   image: string | undefined;
   images: artwork[] | undefined;
@@ -18,34 +19,6 @@ export default function ModalImage({ image, images, currentId }: IModalImage) {
   useEffect(() => {
     setCurrent(currentImages);
   }, [currentImages, isOpen]);
-
-  function openModal() {
-    // Предложить пользователю изменить ориентацию на горизонтальную
-    if (window.matchMedia('(orientation: portrait)').matches) {
-      const confirmation = window.confirm(
-        'Хотите изменить ориентацию на горизонтальную для просмотра изображения?',
-      );
-      if (!confirmation) {
-        return; // Прерываем открытие модального окна, если пользователь не согласен на изменение ориентации
-      }
-    }
-  }
-  // useEffect(() => {
-  //   function handleOrientationChange() {
-  //     if (window.matchMedia("(orientation: portrait)").matches && isOpen) {
-  //       const confirmation = window.confirm('Хотите изменить ориентацию на горизонтальную для просмотра изображения?');
-  //       if (confirmation) {
-  //         screen.orientation.lock('landscape').catch(err => console.error('Could not lock orientation: ', err));
-  //       }
-  //     }
-  //   }
-  //
-  //   window.addEventListener('orientationchange', handleOrientationChange);
-  //
-  //   return () => {
-  //     window.removeEventListener('orientationchange', handleOrientationChange);
-  //   };
-  // }, [isOpen]);
 
   const plusIndex = () => {
     // @ts-ignore
@@ -73,17 +46,14 @@ export default function ModalImage({ image, images, currentId }: IModalImage) {
         </Dialog.Trigger>
         <Dialog.Portal>
           <Dialog.Overlay className="bg-black/60 backdrop-blur data-[state=open]:animate-overlayShow fixed z-[1000] inset-0" />
-          <Dialog.Content
-            className="data-[state=open]:animate-contentShow fixed top-[10px] z-[1001] left-[50%] max-h-[90%] w-[90%]  max-w-full translate-x-[-50%]  rounded-[6px]
-           bg-black  shadow-[hsl(206_22%_7%_/_35%)_0px_10px_38px_-10px,_hsl(206_22%_7%_/_20%)_0px_10px_20px_-15px] focus:outline-none"
-          >
+          <Dialog.Content className="data-[state=open]:animate-contentShow fixed z-[1001] top-0 left-[50%] max-h-[80%] w-[80%]   translate-x-[-50%]  rounded-[6px]bg-black  shadow-[hsl(206_22%_7%_/_35%)_0px_10px_38px_-10px,_hsl(206_22%_7%_/_20%)_0px_10px_20px_-15px]focus:outline-none">
             <div className={'relative'}>
               <ImageCustom
-                styleName={'rounded-lg'}
+                styleName={'rounded-lg '}
                 image_id={images![current!]?.image_id || image}
                 quality={100}
                 size={'1080p'}
-                ratio={16 / 9}
+                ratio={15 / 9}
               />
               <button
                 className="absolute left-[0px] w-[60px] h-[60px]   bg-black/80 flex justify-center items-center  cursor-pointer backdrop-blur rounded-lg top-1/2 translate-y-[-50%] z-[1002] md:left-[-50px]"
