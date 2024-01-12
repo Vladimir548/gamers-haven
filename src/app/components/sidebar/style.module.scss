@@ -1,1 +1,26 @@
+.bg::before{
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  @apply rounded-lg;
+  //background-image:url("../../../../public/neon.png");
+  filter: blur(30px);
+}
+.sidebar_scroll::-webkit-scrollbar {
+  width: 6px; /* ширина всей полосы прокрутки */
+}
+.sidebar_scroll::-webkit-scrollbar-track {
+  /* цвет зоны отслеживания */
+  @apply bg-black
+}
+
+.sidebar_scroll::-webkit-scrollbar-thumb {
+  @apply bg-violet-600; /* цвет бегунка */
+  height: 20px;
+  border-radius: 5px
+
+}
 

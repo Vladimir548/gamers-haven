@@ -15,5 +15,5 @@ export interface IPlatforms {
   checksum: string;
   generation?: number;
   platform_family?: number;
-  abbreviation?: string;
+  abbreviation: string;
 }

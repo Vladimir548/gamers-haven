@@ -6,7 +6,7 @@ import { QueryGame } from '@/app/query/query-game';
 import style from './style.module.scss';
 import ImageCustom from '@/app/components/image/Image';
 import dynamic from 'next/dynamic';
-import { getPalette } from '@/app/get-pallete/getPalette';
+// import { getPalette } from '@/app/get-pallete/getPalette';
 import { useEffect, useState } from 'react';
 const DynamicGameGallery = dynamic(
   () => import('@/app/client-pages/game/game-sections/game-images/GameGallery'),
@@ -31,9 +31,9 @@ export default function GamePageMobile() {
   const getImg = `https://images.igdb.com/igdb/image/upload/t_thumb/${
     data?.artworks ? data?.artworks[0]?.image_id : ''
   }.jpg`;
-  useEffect(() => {
-    getPalette(getImg).then((colorImg) => setIsColorImg(colorImg));
-  }, [getImg]);
+  // useEffect(() => {
+  //   getPalette(getImg).then((colorImg) => setIsColorImg(colorImg));
+  // }, [getImg]);
 
   const firstRelease = new Date(data?.first_release_date! * 1000).getFullYear();
   return (

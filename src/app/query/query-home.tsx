@@ -21,21 +21,23 @@ export const QueryHome = {
         },
       },
     );
-    const gamesWithPalettes = await Promise.all(
-      data.map(async (game) => {
-        const artwork = game.artworks![0];
 
-        const imgUrl = `https://images.igdb.com/igdb/image/upload/t_thumb/${artwork?.image_id}.jpg`;
-        const colors = await getPalette(imgUrl);
-        const palettes = [{ imgUrl, colors }]; // Обработанное изображение
+    // const gamesWithPalettes = await Promise.all(
+    //   data.map(async (game) => {
+    //     const artwork = game.artworks![0];
+    //
+    //     const imgUrl = `https://images.igdb.com/igdb/image/upload/t_thumb/${artwork?.image_id}.jpg`;
+    //     const colors = await getPalette(imgUrl);
+    //     const palettes = [{ imgUrl, colors }]; // Обработанное изображение
+    //
+    //     return {
+    //       ...game,
+    //       palettes,
+    //     };
+    //   }),
+    // );
 
-        return {
-          ...game,
-          palettes,
-        };
-      }),
-    );
-    return gamesWithPalettes as GamesResponse;
+    return data as GamesResponse;
   },
   async getPopular() {
     const { data } = await axios.post<GamesResponse>(

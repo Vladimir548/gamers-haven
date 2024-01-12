@@ -1,51 +1,54 @@
 'use client';
-import style from './style.module.scss';
-import { GenresResponse } from '@/interface/interface-genres';
-import Image from 'next/image';
-import Link from 'next/link';
-import cn from 'classnames';
-interface ICard {
-  image: string;
-  title: string;
 
-  id: number;
+import ImageCustom from '@/app/components/image/Image';
+import { CiStar } from 'react-icons/ci';
+import Link from 'next/link';
+
+interface ICard {
+  name: string | undefined;
+  id: number | undefined;
+  genres: string | undefined;
+  releaseYear: number | undefined;
+  poster: string | undefined;
+  rating: number | undefined;
 }
-export default function Card({ image, title, id }: ICard) {
+export default function Card({ name, id, poster, rating, genres }: ICard) {
   return (
-    <div className={'flex'}>
-      <div className={cn('flex', style.card)}>
-        <Link className={'flex'} href={`/games/${id}`}>
-          <div className="w-[300px]  rounded-lg  border-2 border-fuchsia-600 flex flex-col overflow-hidden">
-            <div className="w-full h-[150px] shadow  ">
-              <Image
-                src={`${
-                  image
-                    ? `https://images.igdb.com/igdb/image/upload/t_screenshot_big/${image}.jpg`
-                    : ''
-                }`}
-                alt={title}
-                height={185}
-                width={250}
-                className={'object-cover w-full h-full rounded-lg '}
-              />
+    <div className={'flex relative'}>
+      <Link
+        href={`/game/${id}`}
+        className="flex flex-col p-1 bg-primary rounded-md shadow-[0_0_4px_0_rgb(68,68,68)] ease-linear duration-300 overflow-hidden hover:bg-dark-violet"
+      >
+        <div className="absolute left-0 top-0 w-full h-full blur-[10px]">
+          <ImageCustom image_id={poster} size={'micro'} ratio={1 / 1.3} quality={1} />
+        </div>
+
+        <div className="w-[214px]  max-h-[304px] ">
+          <ImageCustom
+            image_id={poster}
+            size={'cover_big'}
+            ratio={3 / 4}
+            quality={100}
+            styleName={'rounded-lg object-cover '}
+          />
+        </div>
+        <div className=" p-1 flex relative z-10 flex-col h-full">
+          <div className="flex-wrap flex flex-1 ">
+            <h2 className={'overflow_line_two'}> {name}</h2>
+          </div>
+          <div className=" flex justify-between items-center gap-x-2 border-t-1 border-white/30">
+            <div>
+              <span className={'overflow_line_one'}>{genres}</span>
             </div>
-            <div
-              className={cn(
-                'p-2 flex flex-1 flex-col backdrop-blur ease-in-out duration-300 rounded-t-lg bg-[#000428]/70  ',
-              )}
-            >
-              <h2 className={cn('text-light-gray flex flex-1', style.title)}> {title}</h2>
-              {/*<div className="text-light-gray flex gap-x-1">*/}
-              {/*  {genres.map((genre) => (*/}
-              {/*    <span className={'text-xs'} key={genre.id}>*/}
-              {/*      {genre.name}*/}
-              {/*    </span>*/}
-              {/*  ))}*/}
-              {/*</div>*/}
+            <div className="flex items-center gap-x-1">
+              <span>
+                <CiStar size={18} />
+              </span>
+              <span>{Number(rating).toFixed(1)}</span>
             </div>
           </div>
-        </Link>
-      </div>
+        </div>
+      </Link>
     </div>
   );
 }

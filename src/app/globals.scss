@@ -1,14 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+html{
+  height: 100%;
 
-body {
-  min-height: 100%;
-
-  background-image: radial-gradient( circle 815px at 23.4% -21.8%, rgba(9,29,85,1) 0.2%, rgba(0,0,0,1) 100.2% );
   background-attachment: fixed, scroll;
+}
+body {
+
   color: #fff;
-  background: #000;
+
 
 }
 .backdrop {
@@ -48,15 +49,10 @@ body {
   }
 }
 .overflow_line_one{
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: -moz-box;
-  -moz-box-orient: vertical;
   display: -webkit-box;
-  -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
-  line-clamp: 1;
-  box-orient: vertical;
+  overflow: hidden;
+  -webkit-line-clamp: 1;
 }
 .overflow_line_two{
   overflow: hidden;
@@ -139,6 +135,19 @@ body::-webkit-scrollbar-track {
 
 body::-webkit-scrollbar-thumb {
   @apply bg-violet-600; /* цвет бегунка */
+  height: 20px;
+  border-radius: 5px
+
+}
+.scroll::-webkit-scrollbar{
+  width: 6px;
+}
+.scroll::-webkit-scrollbar-track {
+  /* цвет зоны отслеживания */
+  @apply bg-black
+}
+.scroll::-webkit-scrollbar-thumb {
+  @apply bg-dark-violet; /* цвет бегунка */
   height: 20px;
   border-radius: 5px
 

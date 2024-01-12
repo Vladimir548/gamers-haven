@@ -23,12 +23,16 @@ export default function SidebarMenu({
   const isActive = pathname === link;
   const isActiveStarts = pathname.startsWith(link);
   return (
-    <div>
+    <div
+      className={`${
+        isActive && 'border-l-3 border-[#b402f8]'
+      } ease-in-out duration-100 hover:border-l-3 border-[#b402f8]`}
+    >
       <Link
         key={id}
-        className={` text-white flex items-center my-1  p-2 ${
-          isActive ? 'bg-blue-700/70' : 'bg-violet-800/70'
-        }  backdrop-blur rounded-lg  ease-in-out duration-300  w-full hover:bg-violet-950/70 `}
+        className={`  flex items-center my-1 font-medium   p-1 py-2  ${
+          isActive ? 'text-[#b402f8] ' : 'text-white'
+        }    ease-in-out duration-300  w-full  `}
         href={link}
       >
         <span className={'pr-2 '}>{isActive ? <IconActive size={24} /> : <Icon size={24} />}</span>

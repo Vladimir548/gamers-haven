@@ -1,20 +1,7 @@
-
 .card{
-  @apply ease-in-out duration-300;
- &:hover{
-   transform: scale(0.95);
- }
+  @apply relative
 }
-.wrapper{
-  @apply w-[300px]   rounded-lg backdrop-blur  border-2 border-fuchsia-600 flex flex-col overflow-hidden;
-}
-.image{
-  @apply w-full h-[150px] shadow;
-}
-.information{
-  @apply flex flex-1 flex-col;
-  background: #8E54E9;
-}
+
 .title{
   overflow: hidden;
   text-overflow: ellipsis;

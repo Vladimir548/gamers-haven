@@ -17,13 +17,13 @@ export default function SwiperHome() {
     queryFn: () => QueryHome.getSwiper(),
   });
 
-  const [resolvedData, setResolvedData] = useState<GamesResponse>([]);
-
-  useEffect(() => {
-    if (!isLoading && data) {
-      Promise.all(data).then((res) => setResolvedData(res));
-    }
-  }, [isLoading, data]); // Зависимости useEffect от isLoading и data
+  // const [resolvedData, setResolvedData] = useState<GamesResponse>([]);
+  //
+  // useEffect(() => {
+  //   if (!isLoading && data) {
+  //     Promise.all(data).then((res) => setResolvedData(res));
+  //   }
+  // }, [isLoading, data]); // Зависимости useEffect от isLoading и data
 
   return (
     <div>
@@ -46,7 +46,7 @@ export default function SwiperHome() {
         modules={[Autoplay]}
         className="mySwiper"
       >
-        {resolvedData?.map((game) => (
+        {data?.map((game) => (
           <SwiperSlide key={game.id} className={'relative rounded-lg'}>
             <Link key={game.id} href={`/game/${game.id}`} className={'relative w-full h-full'}>
               <Image
@@ -57,9 +57,6 @@ export default function SwiperHome() {
                 quality={40}
               />
               <div
-                style={{
-                  backgroundColor: `rgba(${game?.palettes[0]?.colors.join(',')},.4)`,
-                }}
                 className={`absolute left-0 bottom-0 w-full h-full  z-10 backdrop-blur-[5px] ease-in-out duration-300  rounded-lg overflow-hidden hover:backdrop-blur-[15px]`}
               >
                 <div className="flex justify-items-start w-full  items-end  px-3 py-2 h-full ">

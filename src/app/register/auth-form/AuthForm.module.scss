@@ -1,0 +1,82 @@
+.input-field {
+	@apply w-full p-2 border border-neutral-400 rounded focus:outline-none focus:border-indigo-500 bg-transparent text-white transition-colors mt-1;
+}
+
+.btn-primary {
+	@apply w-full py-2 text-white font-semibold rounded transition duration-300 ease-in-out mt-1;
+
+	&:hover {
+		@apply transform scale-105;
+	}
+}
+.card {
+	width: 300px;
+	max-height: 450px;
+	padding: 15px;
+	border-radius: 10px;
+	display: flex;
+	flex-direction: column;
+	position: relative;
+	background-color: rgba(113, 113, 113, 0.6);
+	backdrop-filter: blur(50px);
+	border: 2px solid #fff;
+	--rotate-animation: rotate(45deg);
+	--scale-animation: scale(0);
+	/* Backgrounds - Social Media Hover */
+	--bg-facebook: blue;
+	--bg-instagram: linear-gradient(to right, #8a2387, #e94057, #441c06);
+	--bg-twitter: rgb(25, 173, 206);
+	--bg-linkedin: rgb(30, 48, 131);
+	&:before{
+		content: '';
+		height: 110%;
+		width: 110%;
+		position: absolute;
+		top: -5%;
+		left: -5%;
+		z-index: -1;
+		background: linear-gradient(
+										to bottom,
+										#0f0c29,
+										#120a57,
+										rgba(158, 7, 210, 0.74)
+		);
+		filter: blur(30px);
+	}
+}
+//.btn{
+//	@apply w-[270px] h-[40px] flex justify-center items-center rounded-md bg-blue-600/80 backdrop-blur-[30px] ease-in-out duration-300 hover:bg-blue-800
+//}
+
+.btn {
+	background-image: linear-gradient(to right, #5C258D 0%, #4389A2  51%, #5C258D  100%);
+
+	width: 270px;
+	height: 40px;
+	text-align: center;
+	transition: 0.5s;
+	background-size: 200% auto;
+	color: white;
+
+	border-radius: 10px;
+	display: block;
+}
+
+.btn:hover {
+	background-position: right center; /* change the direction of the change here */
+	color: #fff;
+	text-decoration: none;
+}
+
+@media (max-width: 340px) {
+	.card{
+		width: 260px;
+		padding: 10px;
+	}
+	.btn{
+		width: 230px;
+	}
+	.input-field{
+		width: 230px;
+	}
+}

@@ -9,6 +9,7 @@ import ReduxProvider from '@/providers/ProviderRedux';
 import ProviderNextUi from '@/providers/ProviderNextUI';
 
 import NavigationBottom from '@/app/components/navigation-bottom/NavigationBottom';
+import back from '../../public/neon_4.png';
 
 const noto = Noto_Serif({ subsets: ['latin'] });
 
@@ -16,16 +17,21 @@ export const metadata: Metadata = {
   title: 'GamersHaven',
   description: 'All information about games',
 };
-
+// const styles = {
+//   backgroundImage: `url(${back.src})`,
+//   backgroundAttachment: 'fixed',
+//   backgroundSize: '100%',
+//   backgroundRepeat: 'no-repeat',
+// };
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={'bg-black'}>
+    <html lang="en" className={'bg-primary'}>
       <body className={noto.className}>
         <QueryProviders>
           <ReduxProvider>
             <ProviderNextUi>
-              <div className="">
-                <div className={''}>
+              <div className="flex">
+                <div className={'w-[260px] relative'}>
                   <Sidebar />
                 </div>
                 <main className={'relative w-full '}>

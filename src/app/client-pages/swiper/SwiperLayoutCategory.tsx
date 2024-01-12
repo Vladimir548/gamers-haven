@@ -15,6 +15,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { FaStar } from 'react-icons/fa';
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
+import { MdFavoriteBorder } from 'react-icons/md';
 interface ISwiperLayout {
   data?: GamesResponse;
   title: string;

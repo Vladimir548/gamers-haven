@@ -1,14 +1,15 @@
 'use client';
 
 import { useQuery } from '@tanstack/react-query';
-
 import { useParams } from 'next/navigation';
 import style from './style.module.scss';
 import ImageCustom from '@/app/components/image/Image';
 import GameRating from './GameRating';
 import { QueryGame } from '@/app/query/query-game';
 import dynamic from 'next/dynamic';
-import GameInformation from '@/app/client-pages/game/game-sections/game-info/GameInformation';
+import FavoriteToggle from '@/app/components/favorite-toggle/FavoriteToggle';
+import { getIdUser } from '@/services/auth/auth.helper';
+import ToastComponent from '@/app/components/toast/Toast';
 
 const DynamicGameGallery = dynamic(
   () => import('@/app/client-pages/game/game-sections/game-images/GameGallery'),
@@ -22,6 +23,7 @@ const DynamicGameSimilar = dynamic(
 export default function GamePageTable() {
   const params = useParams();
 
+  const userId = getIdUser();
   const { data, isLoading, status } = useQuery({
     queryKey: ['get-id-game', params.id],
     queryFn: () => QueryGame.getGame(String(params!.id)),
@@ -85,6 +87,16 @@ export default function GamePageTable() {
               </div>
             </div>
           </div>
+        </div>
+        <div className="absolute z-20 right-0 top-0 bg-black/60 backdrop-blur-[40px] w-full h-[40px] flex items-center">
+          <FavoriteToggle
+            id={data?.id}
+            title={data?.name}
+            genres={data?.genres?.map((genre) => genre.name)}
+            poster={data?.cover?.url}
+            rating={data?.rating}
+            releaseYear={data?.first_release_date}
+          />
         </div>
       </div>
 

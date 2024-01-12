@@ -44,6 +44,7 @@ export interface Games {
   hypes?: number;
   status?: number;
   rating: number;
+  total_rating: number;
   rating_count: number;
   version_parent?: number;
   version_title?: string;

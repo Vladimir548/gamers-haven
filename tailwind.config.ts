@@ -12,6 +12,9 @@ const config: Config = {
       colors: {
         'black-gray': '#191919',
         'light-gray': '#B4B4B4',
+        primary: '#0e1820',
+        secondary: '#0c171f',
+        'dark-violet': '#670c93',
       },
       flex: {
         'flex-full': '0 0 100%',
