@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 interface IInitialState {
-  platform: string[];
+  platform: number[];
 }
 
 const initialState: IInitialState = {
@@ -11,7 +11,7 @@ export const PlatformsSlice = createSlice({
   name: 'platforms',
   initialState,
   reducers: {
-    togglePlatforms(state, action: PayloadAction<string>) {
+    togglePlatforms(state, action: PayloadAction<number>) {
       const platformsList = state.platform.some((platform) => platform === action.payload);
       if (!platformsList) {
         state.platform = [...state.platform, action.payload];
@@ -19,6 +19,15 @@ export const PlatformsSlice = createSlice({
         state.platform = state.platform.filter((platform) => platform !== action.payload);
       }
     },
+    addPlatforms(state, action: PayloadAction<number>) {
+      const platformsList = state.platform.some((platform) => platform === action.payload);
+      if (!platformsList) {
+        state.platform = [...state.platform, action.payload];
+      }
+    },
+    resetPlatforms(state) {
+      state.platform = [];
+    },
   },
 });
-export const { togglePlatforms } = PlatformsSlice.actions;
+export const { togglePlatforms, addPlatforms, resetPlatforms } = PlatformsSlice.actions;

@@ -2,7 +2,7 @@ import axios from 'axios';
 import { GamesResponse } from '@/interface/games/interface-games';
 import { ResponseEvents } from '@/interface/interface-events';
 import { GenresResponse } from '@/interface/interface-genres';
-import { getPalette } from '@/app/get-pallete/getPalette';
+
 // import { getAccessToken } from '@/app/query/query-auth';
 import { CompaniesResponse } from '@/interface/interface-companies';
 const currentDate = Math.floor(Date.now() / 1000);
@@ -12,7 +12,7 @@ export const QueryHome = {
   async getSwiper() {
     const { data } = await axios.post<GamesResponse>(
       '/igdb/games',
-      `fields name,cover.*,  slug ,genres.name,artworks.*,platforms.abbreviation;sort popularity desc ; limit 20; where rating > 20 & rating_count > 10 & first_release_date > ${lastMonthDate} & screenshots != null & cover != null & artworks != null;`,
+      `fields name,cover.*,  slug,summary ,genres.name,artworks.*,platforms.abbreviation;sort popularity desc ; limit 20; where rating > 20 & rating_count > 10 & first_release_date > ${lastMonthDate} & screenshots != null & cover != null & artworks != null & summary !=null;`,
       {
         headers: {
           'Client-ID': `${process.env.NEXT_PUBLIC_CLIENTID}`,
@@ -21,22 +21,6 @@ export const QueryHome = {
         },
       },
     );
-
-    // const gamesWithPalettes = await Promise.all(
-    //   data.map(async (game) => {
-    //     const artwork = game.artworks![0];
-    //
-    //     const imgUrl = `https://images.igdb.com/igdb/image/upload/t_thumb/${artwork?.image_id}.jpg`;
-    //     const colors = await getPalette(imgUrl);
-    //     const palettes = [{ imgUrl, colors }]; // Обработанное изображение
-    //
-    //     return {
-    //       ...game,
-    //       palettes,
-    //     };
-    //   }),
-    // );
-
     return data as GamesResponse;
   },
   async getPopular() {

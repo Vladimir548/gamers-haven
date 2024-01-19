@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-
+const defaultMinValue: number = 0;
+const defaultMaxValue: number = 5000;
 interface IInitialState {
   ratingCountMin: number;
   ratingCountMax: number;
@@ -18,7 +19,12 @@ export const RatingCountSlice = createSlice({
     getMaxRatingCount(state, action: PayloadAction<number>) {
       state.ratingCountMax = action.payload;
     },
+    resetValueCountRating(state) {
+      state.ratingCountMin = defaultMinValue;
+      state.ratingCountMax = defaultMaxValue;
+    },
   },
 });
 
-export const { getMinRatingCount, getMaxRatingCount } = RatingCountSlice.actions;
+export const { getMinRatingCount, getMaxRatingCount, resetValueCountRating } =
+  RatingCountSlice.actions;

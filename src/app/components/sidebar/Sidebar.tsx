@@ -22,10 +22,13 @@ export default function Sidebar() {
     <div className={'relative'}>
       <div
         className={cn(
-          ` ease-in-out duration-300 bg-primary  fixed flex flex-col z-50   w-[215px] shadow-[0_0_4px_0_rgba(255,255,255,0.2)]   left-[5px] top-[60px] h-[90%]   rounded-lg my-2 `,
+          ` ease-in-out duration-300 bg-primary  fixed flex flex-col z-50   w-[215px]    left-0 top-0 h-full     `,
           style.bg,
         )}
       >
+        <div className="h-[60px] p-1">
+          <h2 className={'name'}>GamersHaven</h2>
+        </div>
         <div className={cn('px-1 overflow-y-auto relative z-50 max-h-[60%]', style.sidebar_scroll)}>
           {ROUTES.map((route) => (
             <SidebarMenu key={route.id} {...route} />

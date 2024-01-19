@@ -1,5 +1,5 @@
 import * as Slider from '@radix-ui/react-slider';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 type SliderValue = number;
 interface ISlider {
   minValue: number;
@@ -20,15 +20,22 @@ export default function SliderComponent({
   changeValueMin,
 }: ISlider) {
   const [val, setVal] = useState<number[]>([changeValueMin, changeValueMax]);
-  console.log(val);
-
+  const [resetKey, setResetKey] = useState(0);
+  useEffect(() => {
+    setVal([changeValueMin, changeValueMax]);
+    if (changeValueMin === minValue && changeValueMax === maxValue) {
+      setResetKey((prev) => prev + 1);
+    }
+  }, [changeValueMin, changeValueMax, maxValue, minValue]);
   const handlerSliderChange = (value: number[]) => {
     dispatchMinFn(value[0]);
     dispatchMaxFn(value[1]);
   };
+
   return (
     <>
       <Slider.Root
+        key={resetKey}
         className="relative flex items-center select-none touch-none w-[240px]  h-5"
         defaultValue={[changeValueMin, changeValueMax]}
         max={maxValue}

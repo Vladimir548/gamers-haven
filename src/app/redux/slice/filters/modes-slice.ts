@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 interface IInitialState {
-  mode: string[];
+  mode: number[];
 }
 
 const initialState: IInitialState = {
@@ -11,7 +11,7 @@ export const ModesSlice = createSlice({
   name: 'modes',
   initialState,
   reducers: {
-    toggleModes(state, action: PayloadAction<string>) {
+    toggleModes(state, action: PayloadAction<number>) {
       const modesList = state.mode.some((mode) => mode === action.payload);
       if (!modesList) {
         state.mode = [...state.mode, action.payload];
@@ -19,6 +19,15 @@ export const ModesSlice = createSlice({
         state.mode = state.mode.filter((mode) => mode !== action.payload);
       }
     },
+    addModes(state, action: PayloadAction<number>) {
+      const modesList = state.mode.some((mode) => mode === action.payload);
+      if (!modesList) {
+        state.mode = [...state.mode, action.payload];
+      }
+    },
+    resetModes(state) {
+      state.mode = [];
+    },
   },
 });
-export const { toggleModes } = ModesSlice.actions;
+export const { toggleModes, addModes, resetModes } = ModesSlice.actions;

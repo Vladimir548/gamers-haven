@@ -3,11 +3,12 @@
 import ImageCustom from '@/app/components/image/Image';
 import { CiStar } from 'react-icons/ci';
 import Link from 'next/link';
+import { GenresResponse } from '@/interface/interface-genres';
 
 interface ICard {
   name: string | undefined;
   id: number | undefined;
-  genres: string | undefined;
+  genres: GenresResponse | undefined;
   releaseYear: number | undefined;
   poster: string | undefined;
   rating: number | undefined;
@@ -23,7 +24,7 @@ export default function Card({ name, id, poster, rating, genres }: ICard) {
           <ImageCustom image_id={poster} size={'micro'} ratio={1 / 1.3} quality={1} />
         </div>
 
-        <div className="w-[214px]  max-h-[304px] ">
+        <div className="w-[inherit]   ">
           <ImageCustom
             image_id={poster}
             size={'cover_big'}
@@ -37,9 +38,7 @@ export default function Card({ name, id, poster, rating, genres }: ICard) {
             <h2 className={'overflow_line_two'}> {name}</h2>
           </div>
           <div className=" flex justify-between items-center gap-x-2 border-t-1 border-white/30">
-            <div>
-              <span className={'overflow_line_one'}>{genres}</span>
-            </div>
+            <div>{genres ? <span className={'overflow_line_one'}>{genres[0].name}</span> : ''}</div>
             <div className="flex items-center gap-x-1">
               <span>
                 <CiStar size={18} />

@@ -2,7 +2,8 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 const date = new Date();
 const nowYear = date.getFullYear();
-
+const defaultMinYear: number = 2000;
+const defaultMaxYear: number = nowYear;
 interface IInitialState {
   yearMin: number;
   yearMax: number;
@@ -21,7 +22,11 @@ export const YearSlice = createSlice({
     getMaxYear(state, action: PayloadAction<number>) {
       state.yearMax = action.payload;
     },
+    resetValueYear(state) {
+      state.yearMin = defaultMinYear;
+      state.yearMax = defaultMaxYear;
+    },
   },
 });
 
-export const { getMinYear, getMaxYear } = YearSlice.actions;
+export const { getMinYear, getMaxYear, resetValueYear } = YearSlice.actions;

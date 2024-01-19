@@ -35,7 +35,7 @@ export default function SelectFiltersEngine({ title, content, isLoading }: ISele
             <form>
               {content?.map((item) => (
                 <div
-                  onClick={() => dispatch(toggleEngines(item.name))}
+                  onClick={() => dispatch(toggleEngines(item.id))}
                   className={
                     ' bg-[#201a28] px-2 cursor-pointer border-b-1 border-white/10 flex items-center hover:bg-[#3e324e] '
                   }
@@ -44,7 +44,7 @@ export default function SelectFiltersEngine({ title, content, isLoading }: ISele
                   <input
                     id={item.name}
                     type="checkbox"
-                    defaultChecked={engine.some((e) => e === item.name)}
+                    defaultChecked={engine.some((e) => e === item.id)}
                   />
                   <label
                     className={'w-full p-2 h-full text-base overflow_line_one'}

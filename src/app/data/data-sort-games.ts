@@ -3,16 +3,16 @@ interface IDataSortGames {
   value: string;
   name: string;
 }
-export const DATASORTGAMES = [
+export const DATASORTGAMES: IDataSortGames[] = [
   {
     id: 0,
-    value: 'rating-asc',
-    name: 'Rating ASC',
+    value: 'rating desc',
+    name: 'Rating DESC',
   },
   {
     id: 1,
-    value: 'rating-desc',
-    name: 'Rating DESC',
+    value: 'rating asc',
+    name: 'Rating ASC',
   },
   {
     id: 2,

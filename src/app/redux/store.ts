@@ -8,6 +8,7 @@ import { YearSlice } from '@/app/redux/slice/filters/year-slice';
 import { RatingSlice } from '@/app/redux/slice/filters/rating-slice';
 import { RatingCountSlice } from '@/app/redux/slice/filters/rating-count-slice';
 import { ThemesSlice } from '@/app/redux/slice/filters/themes-slice';
+import { SortGameSlice } from '@/app/redux/slice/sort-game-slice';
 
 const rootReducer = combineReducers({
   sidebar: SidebarSlice.reducer,
@@ -19,6 +20,7 @@ const rootReducer = combineReducers({
   rating: RatingSlice.reducer,
   ratingCount: RatingCountSlice.reducer,
   themes: ThemesSlice.reducer,
+  sortGame: SortGameSlice.reducer,
 });
 const store = configureStore({
   reducer: rootReducer,

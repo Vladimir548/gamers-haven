@@ -11,5 +11,5 @@ export default function UseIsAuth() {
     if (!accessToken) {
       return push('/login');
     }
-  }, [push]);
+  }, [push, accessToken]);
 }

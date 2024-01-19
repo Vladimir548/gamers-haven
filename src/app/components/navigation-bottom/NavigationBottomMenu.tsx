@@ -19,8 +19,8 @@ export default function NavigationBottomMenu({
       <Link
         key={id}
         className={` text-white flex flex-col h-full flex-1 items-center   ${
-          isActive ? 'text-violet-600' : ''
-        }  backdrop-blur   ease-in-out duration-300  w-full hover:bg-violet-950/70 `}
+          isActive ? 'text-dark-violet' : 'text-white'
+        }  backdrop-blur   ease-in-out duration-300  w-full  `}
         href={link}
       >
         <span className={' flex flex-1 items-center'}>

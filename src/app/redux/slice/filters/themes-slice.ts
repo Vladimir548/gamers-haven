@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 interface IInitialState {
-  theme: string[];
+  theme: number[];
 }
 
 const initialState: IInitialState = {
@@ -11,7 +11,7 @@ export const ThemesSlice = createSlice({
   name: 'themes',
   initialState,
   reducers: {
-    toggleThemes(state, action: PayloadAction<string>) {
+    toggleThemes(state, action: PayloadAction<number>) {
       const themesList = state.theme.some((theme) => theme === action.payload);
       if (!themesList) {
         state.theme = [...state.theme, action.payload];
@@ -19,6 +19,15 @@ export const ThemesSlice = createSlice({
         state.theme = state.theme.filter((theme) => theme !== action.payload);
       }
     },
+    addThemes(state, action: PayloadAction<number>) {
+      const themesList = state.theme.some((theme) => theme === action.payload);
+      if (!themesList) {
+        state.theme = [...state.theme, action.payload];
+      }
+    },
+    resetThemes(state) {
+      state.theme = [];
+    },
   },
 });
-export const { toggleThemes } = ThemesSlice.actions;
+export const { toggleThemes, addThemes, resetThemes } = ThemesSlice.actions;

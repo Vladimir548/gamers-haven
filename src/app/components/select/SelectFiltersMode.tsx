@@ -7,6 +7,7 @@ import ArrowOpen from '@/app/components/arrow-open/ArrowOpen';
 
 import { GameMode } from '@/interface/interface-game-info';
 import { toggleModes } from '@/app/redux/slice/filters/modes-slice';
+import { FaCheck } from 'react-icons/fa';
 
 interface ISelectFilters {
   title: string;
@@ -35,23 +36,17 @@ export default function SelectFiltersMode({ title, content, isLoading }: ISelect
             <form>
               {content?.map((item) => (
                 <div
-                  onClick={() => dispatch(toggleModes(item.name))}
+                  onClick={() => dispatch(toggleModes(item.id))}
                   className={
                     ' bg-[#201a28] px-2 cursor-pointer border-b-1 border-white/10 flex items-center hover:bg-[#3e324e] '
                   }
                   key={item.id}
                 >
-                  <input
-                    id={item.name}
-                    type="checkbox"
-                    defaultChecked={mode.some((m) => m === item.name)}
-                  />
-                  <label
-                    className={'w-full p-2 h-full text-base overflow_line_one'}
-                    htmlFor={item.name}
-                  >
-                    {item.name}
-                  </label>
+                  <span className={'text-[#006fff] w-[25px] h-full]'}>
+                    {mode.some((m) => m === item.id) && <FaCheck size={18} />}
+                  </span>
+
+                  <span className={'w-full p-2  text-base overflow_line_one'}>{item.name}</span>
                 </div>
               ))}
             </form>

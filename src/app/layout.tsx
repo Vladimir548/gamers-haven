@@ -17,12 +17,6 @@ export const metadata: Metadata = {
   title: 'GamersHaven',
   description: 'All information about games',
 };
-// const styles = {
-//   backgroundImage: `url(${back.src})`,
-//   backgroundAttachment: 'fixed',
-//   backgroundSize: '100%',
-//   backgroundRepeat: 'no-repeat',
-// };
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={'bg-primary'}>
@@ -31,12 +25,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <ReduxProvider>
             <ProviderNextUi>
               <div className="flex">
-                <div className={'w-[260px] relative'}>
+                <div className={'hidden w-[260px] relative md:block '}>
                   <Sidebar />
                 </div>
-                <main className={'relative w-full '}>
-                  <Header />
-
+                <main className={'relative pt-2 w-full '}>
+                  {/*<div className="sticky left-0 top-0 z-[99] bg-primary/80 backdrop-blur">*/}
+                  {/*  <Header />*/}
+                  {/*</div>*/}
                   <div className=" px-0 md:px-2">{children}</div>
                   <div className="mt-[50px] md:mt-0">
                     <NavigationBottom />

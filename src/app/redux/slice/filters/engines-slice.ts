@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 interface IInitialState {
-  engine: string[];
+  engine: number[];
 }
 
 const initialState: IInitialState = {
@@ -11,7 +11,7 @@ export const EnginesSlice = createSlice({
   name: 'engines',
   initialState,
   reducers: {
-    toggleEngines(state, action: PayloadAction<string>) {
+    toggleEngines(state, action: PayloadAction<number>) {
       const enginesList = state.engine.some((engine) => engine === action.payload);
       if (!enginesList) {
         state.engine = [...state.engine, action.payload];
@@ -19,6 +19,15 @@ export const EnginesSlice = createSlice({
         state.engine = state.engine.filter((engine) => engine !== action.payload);
       }
     },
+    addEngines(state, action: PayloadAction<number>) {
+      const enginesList = state.engine.some((engine) => engine === action.payload);
+      if (!enginesList) {
+        state.engine = [...state.engine, action.payload];
+      }
+    },
+    resetEngine(state) {
+      state.engine = [];
+    },
   },
 });
-export const { toggleEngines } = EnginesSlice.actions;
+export const { toggleEngines, addEngines, resetEngine } = EnginesSlice.actions;
