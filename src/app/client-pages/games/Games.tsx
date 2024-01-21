@@ -126,10 +126,10 @@ export default function Games() {
         loader={<Loading />}
         dataLength={data?.pages?.length ? data.pages.length : 20}
       >
-        <div className={style.card}>
+        <div className={style.container}>
           {data?.pages.map((game) =>
             game.data.map((game) => (
-              <div key={game.id} className={'flex'}>
+              <div key={game.id} className={'flex min-w-full rounded-lg '}>
                 <Card
                   name={game.name}
                   id={game.id}

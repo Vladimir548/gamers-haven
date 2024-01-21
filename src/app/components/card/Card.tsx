@@ -4,7 +4,8 @@ import ImageCustom from '@/app/components/image/Image';
 import { CiStar } from 'react-icons/ci';
 import Link from 'next/link';
 import { GenresResponse } from '@/interface/interface-genres';
-
+import cn from 'classnames';
+import style from './style.module.scss';
 interface ICard {
   name: string | undefined;
   id: number | undefined;
@@ -15,12 +16,12 @@ interface ICard {
 }
 export default function Card({ name, id, poster, rating, genres }: ICard) {
   return (
-    <div className={'flex relative'}>
+    <div className={'flex relative w-full  '}>
       <Link
         href={`/game/${id}`}
-        className="flex flex-col p-1 bg-primary rounded-md shadow-[0_0_4px_0_rgb(68,68,68)] ease-linear duration-300 overflow-hidden hover:bg-dark-violet"
+        className="flex flex-col p-1 w-full items-stretch bg-primary rounded-md shadow-[0_0_4px_0_rgb(68,68,68)] ease-linear duration-300 overflow-hidden hover:bg-dark-violet"
       >
-        <div className="absolute left-0 top-0 w-full h-full blur-[10px]">
+        <div className="absolute  left-0 top-0 w-full h-full blur-[10px]">
           <ImageCustom image_id={poster} size={'micro'} ratio={1 / 1.3} quality={1} />
         </div>
 
@@ -33,11 +34,16 @@ export default function Card({ name, id, poster, rating, genres }: ICard) {
             styleName={'rounded-lg object-cover '}
           />
         </div>
-        <div className=" p-1 flex relative z-10 flex-col h-full">
+        <div className=" p-1 flex w-full relative z-10 flex-col h-full">
           <div className="flex-wrap flex flex-1 ">
-            <h2 className={'overflow_line_two'}> {name}</h2>
+            <h2 className={cn('overflow_line_two min-w-full', style.title)}> {name}</h2>
           </div>
-          <div className=" flex justify-between items-center gap-x-2 border-t-1 border-white/30">
+          <div
+            className={cn(
+              'flex justify-between text-default-100 text-sm items-center gap-x-2 border-t-1 border-white/30 ',
+              style.info,
+            )}
+          >
             <div>{genres ? <span className={'overflow_line_one'}>{genres[0].name}</span> : ''}</div>
             <div className="flex items-center gap-x-1">
               <span>

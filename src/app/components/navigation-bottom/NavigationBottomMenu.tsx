@@ -1,5 +1,3 @@
-'use client';
-
 import { IRoutesBottomMenu } from '@/app/data/data-routes-navigation';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
@@ -14,6 +12,8 @@ export default function NavigationBottomMenu({
   const pathname = usePathname();
   const isActive = pathname === link;
   const isActiveStarts = pathname.startsWith(link);
+  console.log(' link ' + link);
+  console.log(pathname);
   return (
     <div className={'flex flex-1 items-center justify-center'}>
       <Link
