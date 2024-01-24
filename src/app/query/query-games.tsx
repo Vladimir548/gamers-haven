@@ -10,7 +10,7 @@ export const QueryGames = {
 
     const { data } = await axios.post(
       '/igdb/games',
-      `fields *, screenshots.*, slug, cover.*,genres.*,artworks.*,platforms.*; limit ${limit};sort ${
+      `fields *, screenshots.*, slug, cover.*,genres.*,themes.name,artworks.*,platforms.*; limit ${limit};sort ${
         dto.sort
       } ;offset ${offset};
       where  first_release_date >= ${unixMinYear} & first_release_date <= ${unixMaxYear} & 
