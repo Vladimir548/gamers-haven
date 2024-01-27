@@ -16,12 +16,12 @@ export const DATASORTGAMES: IDataSortGames[] = [
   },
   {
     id: 2,
-    value: 'release-date-asc',
+    value: 'first_release_date asc',
     name: 'Release Date ASC',
   },
   {
     id: 3,
-    value: 'release-date-desc',
+    value: 'first_release_date desc',
     name: 'Release Date DESC',
   },
 ];

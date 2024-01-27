@@ -13,11 +13,12 @@ import Card from '@/app/components/card/card-one/Card';
 import CardTwo from '@/app/components/card/card-two/CardTwo';
 import Cookies from 'js-cookie';
 import { useTypedSelector } from '@/app/redux/hooks/useTypedSelector';
+import { SkeletonCardOne } from '@/app/components/card/skeletons/CardSkeletons';
 
 export default function Games() {
   const { filters, queryParams, urlParams } = UrlParams();
 
-  const { data, fetchNextPage } = useInfiniteQuery({
+  const { data, fetchNextPage, isSuccess } = useInfiniteQuery({
     queryKey: ['games-all', queryParams],
     queryFn: ({ pageParam }) => QueryGames.getGames(filters, 20, pageParam),
     initialPageParam: 0,
@@ -38,8 +39,14 @@ export default function Games() {
         loader={lengthData?.data?.length === 20 && <Loading />}
         dataLength={data?.pages?.length ? data.pages.length : 20}
       >
-        {typeGamesCard === 'card-one' && <Card data={data} />}
-        {typeGamesCard === 'card-two' && <CardTwo data={data} />}
+        {isSuccess ? (
+          <>
+            {typeGamesCard === 'card-one' && <Card data={data} />}
+            {typeGamesCard === 'card-two' && <CardTwo data={data} />}
+          </>
+        ) : (
+          <Loading />
+        )}
       </InfiniteScroll>
     </>
   );
