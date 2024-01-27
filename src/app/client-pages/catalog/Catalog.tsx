@@ -1,7 +1,7 @@
 'use client';
 
-import { ROUTESCATALOG } from '@/app/data/data-catalog';
 import Link from 'next/link';
+import { ROUTESCATALOG } from '@/data/data-catalog';
 
 export default function Catalog() {
   return (

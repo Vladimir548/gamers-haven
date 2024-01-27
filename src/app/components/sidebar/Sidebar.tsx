@@ -2,18 +2,13 @@
 import SidebarMenu from '@/app/components/sidebar/SidebarMenu';
 import cn from 'classnames';
 import style from './style.module.scss';
-import { ROUTES } from '@/app/data/data-routes';
-import { useEffect, useState } from 'react';
-import { useTypedSelector } from '@/app/redux/hooks/useTypedSelector';
-import { useDispatch } from 'react-redux';
-import { toggleSidebar } from '@/app/redux/slice/sidebar-slice';
-import { ROUTESPRIVATE } from '@/app/data/data-private-routes';
+import { useEffect } from 'react';
 import SidebarUserMenu from '@/app/components/sidebar/SidebarUserMenu';
-import ProfileAvatarPage from '@/app/components/profile-avatar/page';
 import SidebarUser from '@/app/components/sidebar/SidebarUser';
 import UseCurrentUser from '@/app/hooks/useCurrentUser';
 import BtnSignIn from '@/app/components/btn-signin/BtnSignIn';
-import BtnSignUp from '@/app/components/btn-signup/BtnSignUp';
+import { ROUTES } from '@/data/data-routes';
+import { ROUTESPRIVATE } from '@/data/data-private-routes';
 
 export default function Sidebar() {
   const user = UseCurrentUser();

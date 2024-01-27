@@ -1,6 +1,6 @@
-import { IRoutesBottomMenu } from '@/app/data/data-routes-navigation';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
+import { IRoutesBottomMenu } from '@/data/data-routes-navigation';
 
 export default function NavigationBottomMenu({
   id,

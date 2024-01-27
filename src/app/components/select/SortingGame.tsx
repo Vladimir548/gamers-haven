@@ -1,9 +1,10 @@
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './SelectSort';
-import { DATASORTGAMES } from '@/app/data/data-sort-games';
+
 import { useTypedSelector } from '@/app/redux/hooks/useTypedSelector';
 import { useDispatch } from 'react-redux';
 import { getSort } from '@/app/redux/slice/sort-game-slice';
 import { usePathname, useRouter } from 'next/navigation';
+import { DATASORTGAMES } from '@/data/data-sort-games';
 
 export default function SortingGame({ filterParam }: { filterParam: URLSearchParams }) {
   const { sort } = useTypedSelector((state) => state.sortGame);

@@ -3,8 +3,6 @@ import Cookies from 'js-cookie';
 import { EnumTokens } from './auth.service';
 import { jwtDecode } from 'jwt-decode';
 import { InterfaceDataToken } from '@/interface/interface-data-token';
-import { useRouter } from 'next/navigation';
-import { useState } from 'react';
 
 export const getAccessToken = () => {
   const accessToken = Cookies.get(EnumTokens.ACCESS_TOKEN);

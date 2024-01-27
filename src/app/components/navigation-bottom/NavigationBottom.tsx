@@ -1,7 +1,7 @@
 'use client';
 
-import { ROUTESBOTTOM } from '@/app/data/data-routes-navigation';
 import NavigationBottomMenu from './NavigationBottomMenu';
+import { ROUTESBOTTOM } from '@/data/data-routes-navigation';
 
 export default function NavigationBottom() {
   return (
