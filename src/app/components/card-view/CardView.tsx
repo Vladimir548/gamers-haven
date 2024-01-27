@@ -10,11 +10,13 @@ export default function CardView() {
   const { typeGamesCard } = useTypedSelector((state) => state.cardType);
   const dispatch = useDispatch();
   const cookieTypeCard = Cookies.get('typeCard');
+
   useEffect(() => {
     if (!cookieTypeCard) {
       dispatch(cardTypeGames(CARDVIEWTYPE[0].type));
+    } else {
+      dispatch(cardTypeGames(cookieTypeCard));
     }
-    dispatch(cardTypeGames(String(cookieTypeCard)));
   }, [typeGamesCard, cookieTypeCard, dispatch]);
   const saveTypeCard = (type: string) => {
     Cookies.set('typeCard', type, {
