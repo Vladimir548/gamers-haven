@@ -3,7 +3,6 @@ import { IconType } from 'react-icons';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import UseCurrentUser from '@/app/hooks/useCurrentUser';
-import ModalAuth from '@/app/components/modals/modal-auth/ModalAuth';
 
 interface IUserMenu {
   id: number;
@@ -22,11 +21,12 @@ export default function SidebarUserMenu({
   const pathname = usePathname();
   const isActive = pathname === link;
   const user = UseCurrentUser();
+
   return (
     <div
       className={`${
-        isActive && 'border-l-3 border-[#b402f8]'
-      } ease-in-out duration-100 hover:border-l-3 border-[#b402f8]`}
+        isActive && 'border-l-2 border-[#b402f8]'
+      } ease-in-out duration-100 hover:border-l-2 border-[#b402f8]`}
     >
       <Link
         key={id}

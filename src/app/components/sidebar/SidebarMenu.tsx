@@ -25,8 +25,8 @@ export default function SidebarMenu({
   return (
     <div
       className={`${
-        isActive && 'border-l-3 border-[#b402f8]'
-      } ease-in-out duration-100 hover:border-l-3 border-[#b402f8]`}
+        isActive && 'border-l-2  border-[#b402f8]'
+      } ease-in-out duration-100 hover:border-l-2 border-[#b402f8]`}
     >
       <Link
         key={id}

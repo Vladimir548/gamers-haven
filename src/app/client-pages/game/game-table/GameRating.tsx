@@ -1,5 +1,5 @@
 'use client';
-import { CircularProgress, Card, CardBody, CardFooter, Chip } from '@nextui-org/react';
+
 import cn from 'classnames';
 import style from './style.module.scss';
 interface IGameRating {
@@ -8,36 +8,20 @@ interface IGameRating {
 }
 export default function GameRating({ rating, rating_count }: IGameRating) {
   return (
-    <Card
+    <div
       className={cn(
-        'w-[240px] h-[240px] border-none bg-gradient-to-br from-violet-500 to-fuchsia-500',
+        'w-[220px] h-[220px] flex justify-center items-center border-none bg-gradient-to-br rounded-lg from-violet-500 to-fuchsia-500',
         style.rating,
       )}
     >
-      <CardBody className="justify-center items-center pb-0">
-        <CircularProgress
-          classNames={{
-            svg: 'w-36 h-36 drop-shadow-md',
-            indicator: 'stroke-white',
-            track: 'stroke-white/10',
-            value: 'text-3xl font-semibold text-white',
-          }}
-          value={rating}
-          strokeWidth={4}
-          showValueLabel={true}
-        />
-      </CardBody>
-      <CardFooter className="justify-center items-center pt-0">
-        <Chip
-          classNames={{
-            base: 'border-1 border-white/30',
-            content: 'text-white/90 text-small font-semibold',
-          }}
-          variant="bordered"
-        >
-          {rating_count} Data points
-        </Chip>
-      </CardFooter>
-    </Card>
+      <div className="flex flex-col">
+        <div className=" flex justify-center items-center w-[90px] h-[90px] rounded-full">
+          <span className={'text-3xl font-bold'}> {rating?.toFixed(1)}%</span>
+        </div>
+        <div className="">
+          <span>Count vote: {rating_count}</span>
+        </div>
+      </div>
+    </div>
   );
 }

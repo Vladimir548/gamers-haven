@@ -14,7 +14,7 @@ export default function Sidebar() {
   const user = UseCurrentUser();
   useEffect(() => {}, [user]);
   return (
-    <div className={'relative'}>
+    <div className={'relative '}>
       <div
         className={cn(
           ` ease-in-out duration-300 bg-primary  fixed flex flex-col z-50   w-[215px]    left-0 top-0 h-full     `,
@@ -24,29 +24,31 @@ export default function Sidebar() {
         <div className="h-[60px] p-1">
           <h2 className={'name'}>GamersHaven</h2>
         </div>
-        <div className={cn('px-1 overflow-y-auto relative z-50 max-h-[60%]', style.sidebar_scroll)}>
-          {ROUTES.map((route) => (
-            <SidebarMenu key={route.id} {...route} />
-          ))}
-        </div>
-        <div
-          className={cn(
-            'border-t-1 overflow-y-auto relative z-50 border-white/30 px-1  flex-1',
-            style.sidebar_scroll,
-          )}
-        >
-          {ROUTESPRIVATE.map((route) => (
-            <SidebarUserMenu key={route.id} {...route} />
-          ))}
+        <div className="overflow-y-auto scroll">
+          <div className={cn('px-1  relative z-50 ', style.sidebar_scroll)}>
+            {ROUTES.map((route) => (
+              <SidebarMenu key={route.id} {...route} />
+            ))}
+          </div>
+          <div
+            className={cn(
+              'border-t-[1px]   relative z-50 border-white/30 px-1  flex-1',
+              style.sidebar_scroll,
+            )}
+          >
+            {ROUTESPRIVATE.map((route) => (
+              <SidebarUserMenu key={route.id} {...route} />
+            ))}
+          </div>
         </div>
         {user ? (
-          <div className=" border-t-1  border-white/30 relative z-50 h-[60px]  rounded-b-lg duration-300 ease-in-out overflow-hidden hover:bg-gray-700">
+          <div className=" border-t-[1px]  border-white/30 relative z-50 h-[60px]  rounded-b-lg duration-300 ease-in-out overflow-hidden hover:bg-gray-700">
             <SidebarUser />
           </div>
         ) : (
           <div
             className={
-              'h-[60px] border-t-1   border-white/30 flex justify-between p-1 relative z-50 '
+              'h-[60px] border-t-[1px]   border-white/30 flex justify-between p-1 relative z-50 '
             }
           >
             <div className="w-full flex justify-center items-center">

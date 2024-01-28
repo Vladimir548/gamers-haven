@@ -1,7 +1,5 @@
 'use client';
 
-import clsx from 'clsx';
-
 import { saveTokenStorage } from '@/services/auth/auth.helper';
 import { authService } from '@/services/auth/auth.service';
 import { IFormData } from '@/services/auth/auth.types';
@@ -11,6 +9,7 @@ import type { FC } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import styles from './AuthForm.module.scss';
 import Link from 'next/link';
+import cn from 'classnames';
 
 const AuthForm = () => {
   const {
@@ -44,7 +43,7 @@ const AuthForm = () => {
             type="email"
             placeholder="Enter email: "
             {...register('email', { required: true })}
-            className={clsx(
+            className={cn(
               styles['input-field'],
               'w-full p-2 border rounded focus:outline-none focus:border-indigo-500',
             )}
@@ -58,7 +57,7 @@ const AuthForm = () => {
             type="text"
             placeholder="Enter username: "
             {...register('name', { required: true })}
-            className={clsx(
+            className={cn(
               styles['input-field'],
               'w-full p-2 border rounded focus:outline-none focus:border-indigo-500',
             )}
@@ -73,7 +72,7 @@ const AuthForm = () => {
             type="password"
             placeholder="Enter password: "
             {...register('password', { required: true })}
-            className={clsx(
+            className={cn(
               styles['input-field'],
               'w-full p-2 border rounded focus:outline-none focus:border-indigo-500',
             )}

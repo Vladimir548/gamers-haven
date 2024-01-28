@@ -24,10 +24,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <div className={'hidden w-[260px] relative md:block '}>
                 <Sidebar />
               </div>
+
               <main className={'relative pt-2 w-full '}>
                 {/*<div className="sticky left-0 top-0 z-[99] bg-primary/80 backdrop-blur">*/}
                 {/*  <Header />*/}
                 {/*</div>*/}
+
                 <div className=" px-0 md:px-2">{children}</div>
                 <div className="mt-[50px] md:mt-0">
                   <NavigationBottom />

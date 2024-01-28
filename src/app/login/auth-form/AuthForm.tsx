@@ -1,20 +1,15 @@
 'use client';
 
-import clsx from 'clsx';
-
 import { saveTokenStorage } from '@/services/auth/auth.helper';
 import { authService } from '@/services/auth/auth.service';
 import { IFormData } from '@/services/auth/auth.types';
 import { useMutation } from '@tanstack/react-query';
 import { useRouter } from 'next/navigation';
-
 import { SubmitHandler, useForm } from 'react-hook-form';
 import styles from './AuthForm.module.scss';
 import Link from 'next/link';
 import { errorCatch } from '@/api/api.helper';
-import ToastComponent from '@/app/components/toast/Toast';
-import { ErrorMessage } from '@hookform/error-message';
-import { useEffect, useState } from 'react';
+import cn from 'classnames';
 
 const AuthForm = () => {
   const {
@@ -55,7 +50,7 @@ const AuthForm = () => {
                 type="email"
                 placeholder="Enter email: "
                 {...register('email', { required: true })}
-                className={clsx(
+                className={cn(
                   styles['input-field'],
                   'w-full p-2 border rounded focus:outline-none focus:border-indigo-500',
                 )}
@@ -70,7 +65,7 @@ const AuthForm = () => {
                 type="password"
                 placeholder="Enter password: "
                 {...register('password', { required: 'This is required.' })}
-                className={clsx(
+                className={cn(
                   styles['input-field'],
                   'w-full p-2 border rounded focus:outline-none focus:border-indigo-500',
                 )}

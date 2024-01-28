@@ -6,7 +6,7 @@ import SwiperLayoutCategory from '@/app/client-pages/swiper/SwiperLayoutCategory
 import SwiperCompanies from '@/app/client-pages/swiper/SwiperCompanies';
 
 export default function HomePS5() {
-  const { data, isLoading } = useQuery({
+  const { data, isSuccess } = useQuery({
     queryKey: ['home-ps5'],
     queryFn: () => QueryHome.getPS5Games(),
   });
@@ -14,7 +14,7 @@ export default function HomePS5() {
     <div className={'flex flex-col'}>
       <SwiperLayoutCategory
         typeImage={'art'}
-        isLoading={isLoading}
+        isLoading={isSuccess}
         data={data}
         title={'PlayStation exclusive'}
       />

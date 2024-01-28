@@ -3,7 +3,7 @@ import NextImage from 'next/image';
 import * as AspectRatio from '@radix-ui/react-aspect-ratio';
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
-import { Image } from '@nextui-org/react';
+
 interface IImage {
   image_id: string | undefined;
   size: string;

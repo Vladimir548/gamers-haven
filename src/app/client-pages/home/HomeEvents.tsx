@@ -4,9 +4,14 @@ import { useQuery } from '@tanstack/react-query';
 import { QueryHome } from '@/app/query/query-home';
 import Image from '@/app/components/image/Image';
 import { useState } from 'react';
+import Loading from '@/app/components/loading/Loading';
 
 export default function HomeEvents() {
-  const { data } = useQuery({ queryKey: ['home-events'], queryFn: () => QueryHome.getEvents() });
+  const { data, isSuccess } = useQuery({
+    queryKey: ['home-events'],
+    queryFn: () => QueryHome.getEvents(),
+  });
+  if (!isSuccess) return <Loading />;
   return (
     <>
       <h2 className={'title_sections'}>Events</h2>
