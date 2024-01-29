@@ -20,7 +20,7 @@ export default function CardView() {
   }, [typeGamesCard, cookieTypeCard, dispatch]);
   const saveTypeCard = (type: string) => {
     Cookies.set('typeCard', type, {
-      domain: 'localhost',
+      domain: process.env.DOMAIN,
       sameSite: 'strict',
       expires: 1,
     });

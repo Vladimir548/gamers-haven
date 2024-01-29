@@ -29,7 +29,7 @@ export default function FilterSortContent({ urlParams }: ISortFilter) {
           <div className="hidden md:block">
             <Filter valueFilterSorting={urlParams.toString()} />
           </div>
-          <div className="block md:hidden">
+          <div className="flex md:hidden">
             <FilterDrawer valueFilterSorting={urlParams.toString()} />
           </div>
         </div>
