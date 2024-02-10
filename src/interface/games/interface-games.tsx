@@ -53,12 +53,8 @@ export interface Games {
   hours: number;
   minutes: number;
   seconds: number;
-  palettes: Palette[];
 }
-interface Palette {
-  imgUrl?: string;
-  colors: (number[] | undefined)[];
-}
+
 export interface Video {
   checksum: string;
   game: number;

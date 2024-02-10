@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Noto_Serif } from 'next/font/google';
+import { Noto_Serif, Montserrat } from 'next/font/google';
 import './globals.scss';
 import QueryProviders from '@/providers/QueryProviders';
 import Sidebar from '@/app/components/sidebar/Sidebar';
@@ -8,7 +8,7 @@ import ReduxProvider from '@/providers/ProviderRedux';
 
 import NavigationBottom from '@/app/components/navigation-bottom/NavigationBottom';
 
-const noto = Noto_Serif({ subsets: ['latin'] });
+const montserrat = Montserrat({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: 'GamersHaven',
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={'bg-primary'}>
-      <body className={noto.className}>
+      <body className={montserrat.className}>
         <QueryProviders>
           <ReduxProvider>
             <div className="flex">

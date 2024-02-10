@@ -14,3 +14,8 @@ export const errorCatch = (error: any): string => {
       : message
     : error?.message;
 };
+
+export const errorCode = (error: any) => {
+  const code = error?.response?.status;
+  return code ? (typeof error.response.status === 'object' ? code[0] : code) : error?.code;
+};

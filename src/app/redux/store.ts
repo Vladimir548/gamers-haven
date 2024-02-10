@@ -10,6 +10,7 @@ import { RatingCountSlice } from '@/app/redux/slice/filters/rating-count-slice';
 import { ThemesSlice } from '@/app/redux/slice/filters/themes-slice';
 import { SortGameSlice } from '@/app/redux/slice/sort-game-slice';
 import { CardTypeSlice } from '@/app/redux/slice/card-type-slice';
+import { SelectSearchSlice } from '@/app/redux/slice/select-search-slice';
 
 const rootReducer = combineReducers({
   sidebar: SidebarSlice.reducer,
@@ -23,6 +24,7 @@ const rootReducer = combineReducers({
   themes: ThemesSlice.reducer,
   sortGame: SortGameSlice.reducer,
   cardType: CardTypeSlice.reducer,
+  selectSearch: SelectSearchSlice.reducer,
 });
 const store = configureStore({
   reducer: rootReducer,

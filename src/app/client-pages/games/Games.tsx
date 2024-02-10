@@ -11,9 +11,8 @@ import FilterSortContent from '@/app/components/block-filter-sort/FilterSortCont
 import { UrlParams } from '@/tools/url-params/UrlParams';
 import Card from '@/app/components/card/card-one/Card';
 import CardTwo from '@/app/components/card/card-two/CardTwo';
-import Cookies from 'js-cookie';
+
 import { useTypedSelector } from '@/app/redux/hooks/useTypedSelector';
-import { SkeletonCardOne } from '@/app/components/card/skeletons/CardSkeletons';
 
 export default function Games() {
   const { filters, queryParams, urlParams } = UrlParams();

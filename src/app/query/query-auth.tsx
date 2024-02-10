@@ -3,22 +3,20 @@ import axios from 'axios';
 
 let accessToken = '';
 let expressIn = 0;
-export async function getAuthToken() {
+export async function getAuthTokenIGDB() {
   try {
     const { data } = await axios.post<IAuthToken>(
       `https://id.twitch.tv/oauth2/token?client_id=${process.env.NEXT_PUBLIC_CLIENTID}&client_secret=${process.env.NEXT_PUBLIC_SECRETCLIENT}&grant_type=client_credentials`,
     );
-
-    expressIn = data.expires_in;
-    return (accessToken = data.access_token);
+    return data;
   } catch (error) {
     console.log('ошибка при обновлении токена', error);
     throw error;
   }
 }
-export async function getAccessToken() {
+export async function getAccessTokenIGDB() {
   if (!accessToken) {
-    await getAuthToken(); // Получаем первый токен
+    await getAuthTokenIGDB(); // Получаем первый токен
   }
   return accessToken;
 }
@@ -27,7 +25,7 @@ export async function ensureAccessToken() {
   const expirationTime = expressIn;
 
   if (currentTime >= expirationTime) {
-    await getAuthToken();
+    await getAccessTokenIGDB();
   }
   return accessToken;
 }
