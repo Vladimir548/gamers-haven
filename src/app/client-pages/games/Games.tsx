@@ -13,11 +13,14 @@ import Card from '@/app/components/card/card-one/Card';
 import CardTwo from '@/app/components/card/card-two/CardTwo';
 
 import { useTypedSelector } from '@/app/redux/hooks/useTypedSelector';
+import React from 'react';
+import { SkeletonCardOne } from '@/app/components/card/card-one/SkeletonCardOne';
+import SkeletonCardTwo from '@/app/components/card/card-two/SkeletonCardTwo';
 
 export default function Games() {
   const { filters, queryParams, urlParams } = UrlParams();
 
-  const { data, fetchNextPage, isSuccess } = useInfiniteQuery({
+  const { data, fetchNextPage, isSuccess, isPending } = useInfiniteQuery({
     queryKey: ['games-all', queryParams],
     queryFn: ({ pageParam }) => QueryGames.getGames(filters, 20, pageParam),
     initialPageParam: 0,
@@ -38,14 +41,15 @@ export default function Games() {
         loader={lengthData?.data?.length === 20 && <Loading />}
         dataLength={data?.pages?.length ? data.pages.length : 20}
       >
-        {isSuccess ? (
+        <>
           <>
-            {typeGamesCard === 'card-one' && <Card data={data} />}
-            {typeGamesCard === 'card-two' && <CardTwo data={data} />}
+            {typeGamesCard === 'card-one' &&
+              (!isPending ? <Card data={data} /> : <SkeletonCardOne />)}
           </>
-        ) : (
-          <Loading />
-        )}
+
+          {typeGamesCard === 'card-two' &&
+            (!isPending ? <CardTwo data={data} /> : <SkeletonCardTwo />)}
+        </>
       </InfiniteScroll>
     </>
   );

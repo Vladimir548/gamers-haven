@@ -7,13 +7,15 @@ import HomeMultiplayer from '@/app/client-pages/home/HomeMultiplayer';
 import dynamic from 'next/dynamic';
 import HomeMobileGames from '@/app/client-pages/home/HomeMobileGames';
 import { QueryHome } from '@/app/query/query-home';
+import Skeleton from 'react-loading-skeleton';
+import { Suspense } from 'react';
+import SwiperHome from '@/app/client-pages/swiper/SwiperHome';
 
-const DynamicSwiperHome = dynamic(() => import('@/app/client-pages/swiper/SwiperHome'));
 export default function Home() {
   return (
     <div className={'px-1'}>
       <div className="">
-        <DynamicSwiperHome QueryFn={QueryHome.getSwiper} />
+        <SwiperHome QueryFn={QueryHome.getSwiper} />
       </div>
       <div className="">
         <HomePopular />

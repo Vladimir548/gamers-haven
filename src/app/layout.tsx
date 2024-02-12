@@ -25,7 +25,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 <Sidebar />
               </div>
 
-              <main className={'relative pt-2 w-full '}>
+              <main className={'relative w-full '}>
                 {/*<div className="sticky left-0 top-0 z-[99] bg-primary/80 backdrop-blur">*/}
                 {/*  <Header />*/}
                 {/*</div>*/}

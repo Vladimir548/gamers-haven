@@ -1,14 +1,10 @@
-import dynamic from 'next/dynamic';
-import Loading from '@/app/components/loading/Loading';
-const DynamicHome = dynamic(() => import('@/app/client-pages/home/Home'), {
-  loading: () => <Loading />,
-});
+import Home from '@/app/client-pages/home/Home';
 
 export default async function HomePage() {
   return (
     <>
       <div>
-        <DynamicHome />
+        <Home />
       </div>
     </>
   );

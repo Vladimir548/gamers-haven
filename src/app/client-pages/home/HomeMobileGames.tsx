@@ -2,20 +2,20 @@
 import { useQuery } from '@tanstack/react-query';
 import { QueryHome } from '@/app/query/query-home';
 import SwiperLayoutCategory from '@/app/client-pages/swiper/SwiperLayoutCategory';
+import SwiperCatagorySkeleton from '@/app/client-pages/swiper/SwiperCatagorySkeleton';
 
 export default function HomeMobileGames() {
-  const { data, isSuccess } = useQuery({
+  const { data, isPending } = useQuery({
     queryKey: ['home-mobile-games'],
     queryFn: () => QueryHome.getMobileGames(),
   });
   return (
     <div>
-      <SwiperLayoutCategory
-        title={'Mobile games'}
-        typeImage={'art'}
-        data={data}
-        isLoading={isSuccess}
-      />
+      {!isPending ? (
+        <SwiperLayoutCategory title={'Mobile games'} data={data} />
+      ) : (
+        <SwiperCatagorySkeleton />
+      )}
     </div>
   );
 }

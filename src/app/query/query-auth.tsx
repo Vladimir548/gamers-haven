@@ -1,8 +1,7 @@
 'use server';
 import axios from 'axios';
 
-let accessToken = '';
-let expressIn = 0;
+
 export async function getAuthTokenIGDB() {
   try {
     const { data } = await axios.post<IAuthToken>(
@@ -14,18 +13,4 @@ export async function getAuthTokenIGDB() {
     throw error;
   }
 }
-export async function getAccessTokenIGDB() {
-  if (!accessToken) {
-    await getAuthTokenIGDB(); // Получаем первый токен
-  }
-  return accessToken;
-}
-export async function ensureAccessToken() {
-  const currentTime = Date.now() / 1000;
-  const expirationTime = expressIn;
 
-  if (currentTime >= expirationTime) {
-    await getAccessTokenIGDB();
-  }
-  return accessToken;
-}

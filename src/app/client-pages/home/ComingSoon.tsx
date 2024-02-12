@@ -2,9 +2,10 @@
 import { useQuery } from '@tanstack/react-query';
 import { QueryHome } from '@/app/query/query-home';
 import SwiperLayoutCategory from '@/app/client-pages/swiper/SwiperLayoutCategory';
+import SwiperCatagorySkeleton from '@/app/client-pages/swiper/SwiperCatagorySkeleton';
 
 export default function ComingSoon() {
-  const { data, isSuccess } = useQuery({
+  const { data, isPending } = useQuery({
     queryKey: ['home-top'],
     queryFn: () => QueryHome.getComing(),
   });
@@ -13,12 +14,11 @@ export default function ComingSoon() {
 
   return (
     <div>
-      <SwiperLayoutCategory
-        title={'Coming soon...'}
-        typeImage={'art'}
-        data={data}
-        isLoading={isSuccess}
-      />
+      {!isPending ? (
+        <SwiperLayoutCategory title={'Coming soon...'} data={data} />
+      ) : (
+        <SwiperCatagorySkeleton />
+      )}
     </div>
   );
 }

@@ -47,9 +47,8 @@
   }
 }
 .card_info{
-  @apply relative px-1 w-full ease-linear duration-300 max-h-full  flex flex-1  flex-col  backdrop-blur;
-  background: #141e30;
-  background: linear-gradient(to right, #141e30, #243b55);
+  @apply relative px-1 w-full ease-linear duration-300 max-h-full  flex flex-1  flex-col  backdrop-blur bg-gray-900;
+
 }
 
 .card_art{
