@@ -8,12 +8,12 @@ import cn from 'classnames';
 import style from './style.module.scss';
 import { Games, GamesResponse } from '@/interface/games/interface-games';
 import { InfiniteData } from '@tanstack/react-query';
-import Skeleton from 'react-loading-skeleton';
 import React from 'react';
 interface ICard {
   data: InfiniteData<{ data: GamesResponse; nextOffset: number }> | undefined;
+  isPending: boolean;
 }
-export default function Card({ data }: ICard) {
+export default function Card({ data, isPending }: ICard) {
   return (
     <div className={style.container}>
       <>
@@ -25,14 +25,14 @@ export default function Card({ data }: ICard) {
                   href={`/game/${game.id}`}
                   className="flex flex-col p-1 w-full items-stretch bg-primary rounded-md shadow-[0_0_4px_0_rgb(68,68,68)] ease-linear duration-300 overflow-hidden hover:bg-dark-violet"
                 >
-                  <div className="absolute  left-0 top-0 w-full h-full blur-[10px]">
-                    <ImageCustom
-                      image_id={game.cover?.image_id}
-                      size={'micro'}
-                      ratio={1 / 1.3}
-                      quality={1}
-                    />
-                  </div>
+                  {/*<div className="absolute  left-0 top-0 w-full h-full blur-[10px]">*/}
+                  {/*  <ImageCustom*/}
+                  {/*    image_id={game.cover?.image_id}*/}
+                  {/*    size={'micro'}*/}
+                  {/*    ratio={1 / 1.3}*/}
+                  {/*    quality={1}*/}
+                  {/*  />*/}
+                  {/*</div>*/}
 
                   <div className="w-[inherit]   ">
                     <ImageCustom

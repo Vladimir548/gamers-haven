@@ -44,7 +44,7 @@ export default function Games() {
         <>
           <>
             {typeGamesCard === 'card-one' &&
-              (!isPending ? <Card data={data} /> : <SkeletonCardOne />)}
+              (!isPending ? <Card data={data} isPending={isPending} /> : <SkeletonCardOne />)}
           </>
 
           {typeGamesCard === 'card-two' &&
