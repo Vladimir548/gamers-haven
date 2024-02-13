@@ -30,6 +30,7 @@ export default function ImageCustom({
             quality={quality}
             fill
             alt={'image'}
+            loading={'lazy'}
             className={`object-cover relative  w-full h-full ${styleName}`}
           />
         ) : (

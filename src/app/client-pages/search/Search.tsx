@@ -52,7 +52,7 @@ export default function Search() {
   };
   const debounced = useDebounce(getValues('value'));
   return (
-    <div>
+    <div className={'pt-2'}>
       <form
         className="flex mx-1 justify-between items-center gap-x-2"
         onSubmit={handleSubmit(onSubmit)}

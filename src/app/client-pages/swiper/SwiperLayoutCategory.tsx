@@ -5,7 +5,7 @@ import 'swiper/css';
 import style from './style.module.scss';
 import './styles.css';
 import Image from '@/app/components/image/Image';
-import React, { useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { GamesResponse } from '@/interface/games/interface-games';
 import Link from 'next/link';
 import cn from 'classnames';
