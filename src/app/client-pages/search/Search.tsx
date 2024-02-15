@@ -21,6 +21,7 @@ export default function Search() {
   const { selectValue } = useTypedSelector((state) => state.selectSearch);
   const inputRef = useRef<any>(null);
   const [isActive, setIsActive] = useState(false);
+  console.log(isActive);
   const pathname = usePathname();
   const queryValue = useSearchParams();
   useEffect(() => {
@@ -89,7 +90,12 @@ export default function Search() {
             </div>
           )}
           <div className="">
-            <SearchDropdown value={debounced} isActiveInput={isActive} inputRef={inputRef} />
+            <SearchDropdown
+              value={debounced}
+              isActiveInput={isActive}
+              setIsActiveInput={setIsActive}
+              inputRef={inputRef}
+            />
           </div>
         </div>
         <div className="hidden md:flex">

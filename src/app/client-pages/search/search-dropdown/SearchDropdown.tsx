@@ -4,21 +4,25 @@ import { useDispatch } from 'react-redux';
 import { getSelectValue } from '@/app/redux/slice/select-search-slice';
 import { useEffect, useRef, useState } from 'react';
 import Skeleton from 'react-loading-skeleton';
+import { usePathname, useRouter } from 'next/navigation';
 
 export default function SearchDropdown({
   value,
   isActiveInput,
+  setIsActiveInput,
   inputRef,
 }: {
   value: string;
   isActiveInput: boolean;
+  setIsActiveInput: (val: boolean) => void;
   inputRef: any;
 }) {
   const { data, isLoading, isSuccess } = useQuery({
     queryFn: () => QuerySearch.getSearchDropdown(value),
     queryKey: ['dropdown-search', value],
   });
-  console.log(data?.map((game) => game).length === 0);
+  const { push } = useRouter();
+  const pathname = usePathname();
   const [isActive, setIsActive] = useState(false);
   const [isActiveValue, setIsActiveValue] = useState(false);
   useEffect(() => {
@@ -31,6 +35,8 @@ export default function SearchDropdown({
   const dispatch = useDispatch();
   const handleValue = (value: string) => {
     dispatch(getSelectValue(value));
+    push(pathname + '?' + 'q=' + value);
+    setIsActiveInput(false);
   };
   const dropdownRef = useRef<any>(null);
   const handleCloseSelect = (e: any) => {
@@ -45,6 +51,7 @@ export default function SearchDropdown({
       setIsActive(true);
     }
   };
+
   useEffect(() => {
     document.addEventListener('mousedown', handleCloseSelect);
     return () => {
