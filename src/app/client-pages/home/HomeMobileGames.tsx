@@ -2,7 +2,7 @@
 import { useQuery } from '@tanstack/react-query';
 import { QueryHome } from '@/app/query/query-home';
 import SwiperLayoutCategory from '@/app/client-pages/swiper/SwiperLayoutCategory';
-import SwiperCatagorySkeleton from '@/app/client-pages/swiper/SwiperCatagorySkeleton';
+import SwiperCategorySkeleton from '@/app/client-pages/swiper/SwiperCategorySkeleton';
 
 export default function HomeMobileGames() {
   const { data, isPending } = useQuery({
@@ -14,7 +14,7 @@ export default function HomeMobileGames() {
       {!isPending ? (
         <SwiperLayoutCategory title={'Mobile games'} data={data} />
       ) : (
-        <SwiperCatagorySkeleton />
+        <SwiperCategorySkeleton />
       )}
     </div>
   );

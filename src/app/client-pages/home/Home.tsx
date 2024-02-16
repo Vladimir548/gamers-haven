@@ -7,9 +7,10 @@ import HomeMultiplayer from '@/app/client-pages/home/HomeMultiplayer';
 import dynamic from 'next/dynamic';
 import HomeMobileGames from '@/app/client-pages/home/HomeMobileGames';
 import { QueryHome } from '@/app/query/query-home';
-import Skeleton from 'react-loading-skeleton';
-import { Suspense } from 'react';
+
 import SwiperHome from '@/app/client-pages/swiper/SwiperHome';
+import { Suspense } from 'react';
+import SwiperCategorySkeleton from '@/app/client-pages/swiper/SwiperCategorySkeleton';
 
 export default function Home() {
   return (
@@ -17,9 +18,11 @@ export default function Home() {
       <div className="">
         <SwiperHome QueryFn={QueryHome.getSwiper} />
       </div>
-      <div className="">
-        <HomePopular />
-      </div>
+      <Suspense fallback={<SwiperCategorySkeleton />}>
+        <div className="">
+          <HomePopular />
+        </div>
+      </Suspense>
       <div className="">
         <HomeEvents />
       </div>

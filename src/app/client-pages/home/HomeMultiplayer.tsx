@@ -3,7 +3,7 @@
 import { useQuery } from '@tanstack/react-query';
 import { QueryHome } from '@/app/query/query-home';
 import SwiperLayoutCategory from '@/app/client-pages/swiper/SwiperLayoutCategory';
-import SwiperCatagorySkeleton from '@/app/client-pages/swiper/SwiperCatagorySkeleton';
+import SwiperCategorySkeleton from '@/app/client-pages/swiper/SwiperCategorySkeleton';
 
 export default function HomeMultiplayer() {
   const { data, isPending } = useQuery({
@@ -15,7 +15,7 @@ export default function HomeMultiplayer() {
       {!isPending ? (
         <SwiperLayoutCategory title={'Multiplayer'} data={data} />
       ) : (
-        <SwiperCatagorySkeleton />
+        <SwiperCategorySkeleton />
       )}
     </div>
   );
