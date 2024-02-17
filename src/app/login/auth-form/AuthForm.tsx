@@ -10,6 +10,8 @@ import styles from './AuthForm.module.scss';
 import Link from 'next/link';
 import { errorCatch } from '@/api/api.helper';
 import cn from 'classnames';
+import toast, { Toaster } from 'react-hot-toast';
+import { useEffect } from 'react';
 
 const AuthForm = () => {
   const {
@@ -31,9 +33,13 @@ const AuthForm = () => {
       saveTokenStorage(data.accessToken);
       reset();
       push('/profile');
+      toast.success('Success');
+    },
+    onError(err) {
+      // @ts-ignore
+      toast.error(err?.response?.data.message);
     },
   });
-  const err = errorCatch(error);
   const onSubmit: SubmitHandler<IFormData> = (data) => {
     mutateLogin(data);
   };
@@ -72,7 +78,6 @@ const AuthForm = () => {
               />
             </label>
           </div>
-          <p className="text-red-600 my-2">{err}</p>
           <div className="mb-4">
             <button disabled={isLoginPending} type="submit" className={styles.btn}>
               Sign in

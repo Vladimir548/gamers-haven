@@ -10,6 +10,7 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import styles from './AuthForm.module.scss';
 import Link from 'next/link';
 import cn from 'classnames';
+import toast from 'react-hot-toast';
 
 const AuthForm = () => {
   const {
@@ -27,6 +28,11 @@ const AuthForm = () => {
       saveTokenStorage(data.accessToken);
       reset();
       push('/profile');
+      toast.success('Registration completed successfully');
+    },
+    onError(err) {
+      // @ts-ignore
+      toast.error(err.response?.data?.message);
     },
   });
 
