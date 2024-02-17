@@ -9,6 +9,7 @@ import SearchResult from '@/app/client-pages/search/SearchResult';
 import Games from '@/app/client-pages/games/Games';
 import { RiSearchLine } from 'react-icons/ri';
 import useDebounce from '@/app/hooks/useDebounce';
+import SearchPopular from '@/app/client-pages/search/SearchPopular';
 
 interface ISearch {
   value: string;
@@ -21,7 +22,6 @@ export default function Search() {
   const { selectValue } = useTypedSelector((state) => state.selectSearch);
   const inputRef = useRef<any>(null);
   const [isActive, setIsActive] = useState(false);
-  console.log(isActive);
   const pathname = usePathname();
   const queryValue = useSearchParams();
   useEffect(() => {
@@ -33,7 +33,7 @@ export default function Search() {
     if (queryValue.get('q') === '') {
       push(pathname);
     }
-  }, [selectValue, setValue, push]);
+  }, [selectValue, setValue, push, getValues, queryValue, pathname]);
   const onSubmit: SubmitHandler<ISearch> = (data) => {
     push(pathname + '?' + 'q=' + data.value);
   };
@@ -108,13 +108,7 @@ export default function Search() {
           </button>
         </div>
       </form>
-      <div className="mt-4">
-        {queryValue.has('q') ? (
-          <SearchResult />
-        ) : (
-          <p className={'text-xl flex justify-center items-center'}>Enter your request</p>
-        )}
-      </div>
+      <div className="mt-4">{queryValue.has('q') ? <SearchResult /> : <SearchPopular />}</div>
     </div>
   );
 }
