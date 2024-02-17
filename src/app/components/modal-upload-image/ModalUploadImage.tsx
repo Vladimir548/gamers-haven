@@ -8,18 +8,29 @@ import { QueryAvatar } from '@/app/query/query-avatar';
 import { SyntheticEvent, useState } from 'react';
 import { LuFileUp } from 'react-icons/lu';
 import { IoCloseCircleOutline } from 'react-icons/io5';
+import toast from 'react-hot-toast';
 export default function ModalUploadImage({ avatar }: { avatar: string | undefined }) {
   const { mutate } = useMutation({
     mutationKey: ['add image'],
     mutationFn: (selectedFile: any) => QueryAvatar.addImage(selectedFile),
-    onSuccess: () => {},
+    onSuccess: () => {
+      toast.success('Avatar added successfully');
+    },
+    onError() {
+      toast.error('There was an error loading');
+    },
   });
   const queryClient = useQueryClient();
   const [selectedFile, setSelectedFile] = useState(null);
-
+  const [previewImg, setPreviewImg] = useState<any>();
   const handleFileChange = (e: any) => {
     const file = e.target.files[0];
     setSelectedFile(file);
+    const reader = new FileReader();
+    reader.onload = () => {
+      setPreviewImg(reader.result);
+    };
+    reader.readAsDataURL(file);
   };
 
   const handlerAddAvatar = async (e: SyntheticEvent) => {
@@ -62,12 +73,25 @@ export default function ModalUploadImage({ avatar }: { avatar: string | undefine
             <form className={'max-w-full'}>
               <label htmlFor={'fileInput'}>
                 <div className="w-[260px] bg-primary rounded-lg flex justify-center items-center flex-col border-2 border-white border-dashed">
-                  <span className={'text-gray-500'}>
-                    <LuFileUp size={120} />
-                  </span>
-                  <span className={'py-2'}>Click to upload image</span>
+                  {!previewImg ? (
+                    <div>
+                      <span className={'text-gray-500 flex justify-center'}>
+                        <LuFileUp size={120} />
+                      </span>
+                      <span className={'py-2'}>Click to upload image</span>
+                    </div>
+                  ) : (
+                    <Image
+                      className={'rounded-full w-[180px] h-[180px]'}
+                      src={previewImg}
+                      alt={'Avatar'}
+                      width={180}
+                      height={180}
+                    />
+                  )}
                 </div>
               </label>
+
               <input
                 className={'hidden'}
                 id={'fileInput'}
