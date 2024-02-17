@@ -6,7 +6,7 @@ import 'swiper/css/virtual';
 import Skeleton from 'react-loading-skeleton';
 import React from 'react';
 
-export default function SwiperCatagorySkeleton() {
+export default function SwiperCategorySkeleton() {
   const slides = Array.from({ length: 4 }).map((el, index) => `Slide ${index + 1}`);
 
   return (
