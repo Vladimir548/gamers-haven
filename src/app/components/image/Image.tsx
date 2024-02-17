@@ -26,7 +26,7 @@ export default function ImageCustom({ image_id, size, styleName, quality, ratio 
           loading={'lazy'}
           className={`
               duration-700 object-cover relative  w-full h-full ${styleName} ease-in-out group-hover:opacity-75
-              ${isLoading ? 'scale-110 blur-2xl grayscale' : 'scale-100 blur-0 grayscale-0'})`}
+              ${isLoading ? ' blur-2xl grayscale' : ' blur-0 grayscale-0'})`}
           onLoadingComplete={() => setIsLoading(false)}
         />
       </AspectRatio.Root>
