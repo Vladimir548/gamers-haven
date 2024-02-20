@@ -21,7 +21,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className={montserrat.className}>
         <QueryProviders>
           <ReduxProvider>
-            <div className="flex gap-x-5">
+            <div className="flex gap-x-5 lg:gap-x-0">
               <div className={'hidden w-[260px] relative md:block '}>
                 <Sidebar />
               </div>
