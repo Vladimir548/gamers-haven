@@ -5,7 +5,7 @@ import { getIdUser } from '@/services/auth/auth.helper';
 export default function UseCurrentUser() {
   const id = getIdUser();
   const { data } = useQuery({
-    queryKey: ['get-current-user', id],
+    queryKey: ['get-current-user'],
     queryFn: () => QueryUser.getUserInfo(id),
   });
   return data;

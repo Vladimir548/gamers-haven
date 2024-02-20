@@ -3,7 +3,7 @@
 import { saveTokenStorage } from '@/services/auth/auth.helper';
 import { authService } from '@/services/auth/auth.service';
 import { IFormData } from '@/services/auth/auth.types';
-import { useMutation } from '@tanstack/react-query';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useRouter } from 'next/navigation';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import styles from './AuthForm.module.scss';
@@ -21,7 +21,7 @@ const AuthForm = () => {
     formState: { errors },
   } = useForm<IFormData>();
   const { push } = useRouter();
-
+  const queryClient = useQueryClient();
   const {
     mutate: mutateLogin,
     isPending: isLoginPending,
@@ -29,11 +29,13 @@ const AuthForm = () => {
   } = useMutation({
     mutationKey: ['login'],
     mutationFn: (data: IFormData) => authService.main('login', data),
-    onSuccess({ data }) {
+    onSuccess: async ({ data }) => {
       saveTokenStorage(data.accessToken);
       reset();
       push('/profile');
       toast.success('Success');
+      console.log('dfdfdf');
+      await queryClient.invalidateQueries({ queryKey: ['get-current-user'] });
     },
     onError(err) {
       // @ts-ignore

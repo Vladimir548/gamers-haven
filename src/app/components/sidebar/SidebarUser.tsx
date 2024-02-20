@@ -5,15 +5,19 @@ import UseCurrentUser from '@/app/hooks/useCurrentUser';
 import { usePathname } from 'next/navigation';
 import { useEffect } from 'react';
 import BtnSignIn from '@/app/components/btn-signin/BtnSignIn';
+import { getAccessToken } from '@/services/auth/auth.helper';
 
 export default function SidebarUser() {
   const data = UseCurrentUser();
   const pathname = usePathname();
-  useEffect(() => {}, [data]);
+
+  useEffect(() => {
+    console.log('rerender');
+  }, [data]);
   return (
     <div>
       <div className={' flex items-center text-white  '}>
-        {data || pathname === '/login' ? (
+        {!data || pathname !== '/login' ? (
           <Link className={' flex gap-x-2 w-full px-1 py-2 items-center'} href={'/profile'}>
             <div className={'w-[40px]'}>
               {data?.avatar ? (
@@ -33,9 +37,6 @@ export default function SidebarUser() {
             </div>
             <div className="flex flex-col">
               <p className={'text-[16px]'}>{data?.name}</p>
-              {/*<span className={'text-[10px] whitespace-nowrap overflow-hidden text-ellipsis'}>*/}
-              {/*  {data?.email}*/}
-              {/*</span>*/}
             </div>
           </Link>
         ) : (
