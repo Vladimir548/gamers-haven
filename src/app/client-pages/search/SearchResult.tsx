@@ -3,7 +3,6 @@
 import { useInfiniteQuery } from '@tanstack/react-query';
 import { QuerySearch } from '@/app/query/query-search';
 import { useSearchParams } from 'next/navigation';
-import CardSearch from '@/app/components/card/card-search/CardSearch';
 import Loading from '@/app/components/loading/Loading';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import Card from '@/app/components/card/card-one/Card';
