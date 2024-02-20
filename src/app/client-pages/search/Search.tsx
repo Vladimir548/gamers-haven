@@ -1,12 +1,11 @@
 'use client';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { MdClear } from 'react-icons/md';
-import React, { BaseSyntheticEvent, ChangeEvent, useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import SearchDropdown from '@/app/client-pages/search/search-dropdown/SearchDropdown';
 import { useTypedSelector } from '@/app/redux/hooks/useTypedSelector';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import SearchResult from '@/app/client-pages/search/SearchResult';
-import Games from '@/app/client-pages/games/Games';
 import { RiSearchLine } from 'react-icons/ri';
 import useDebounce from '@/app/hooks/useDebounce';
 import SearchPopular from '@/app/client-pages/search/SearchPopular';
@@ -33,7 +32,7 @@ export default function Search() {
     if (queryValue.get('q') === '') {
       push(pathname);
     }
-  }, [selectValue, setValue, push, getValues, queryValue, pathname]);
+  }, [selectValue, setValue, push, getValues, queryValue, pathname, useSearchParams]);
   const onSubmit: SubmitHandler<ISearch> = (data) => {
     push(pathname + '?' + 'q=' + data.value);
   };
