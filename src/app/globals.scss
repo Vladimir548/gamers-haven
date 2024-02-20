@@ -29,7 +29,7 @@ body {
   background-image: -webkit-linear-gradient(0deg, #1814e3 0%, #5ffe5a 100%);
   background-clip: text;
   -webkit-background-clip: text;
-  text-fill-color: transparent;
+
   -webkit-text-fill-color: transparent;
   display: block;
   font-size: 28px;
@@ -40,7 +40,7 @@ body {
   background-image: -webkit-linear-gradient(0deg, #970ff2 0%, #beeb0e 100%);
   background-clip: text;
   -webkit-background-clip: text;
-  text-fill-color: transparent;
+
   -webkit-text-fill-color: transparent;
   display: block;
   &:hover{
@@ -63,8 +63,8 @@ body {
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   line-clamp: 2;
-  box-orient: vertical;
-}.overflow_line_three{
+}
+.overflow_line_three{
   overflow: hidden;
   text-overflow: ellipsis;
   display: -moz-box;
@@ -73,9 +73,44 @@ body {
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   line-clamp: 3;
-  box-orient: vertical;
+
 }
 
+.svg-pi {
+  width: 100px;
+  height: 100px;
+  transform: rotate(-90deg); /* Fix the orientation */
+}
+
+.svg-pi-track {
+  stroke: #ddd;
+}
+
+.svg-pi-indicator {
+  stroke: #07c;
+  stroke-dasharray: 100px; /* DashArray = Track's or indicator's Circumference */
+  stroke-linecap: round;
+}
+.svg-pi-track,
+.svg-pi-indicator {
+
+  fill: transparent;
+  stroke-width: 10px;
+}
+
+.svg-pi-10 .svg-pi-indicator {
+  stroke-dashoffset: 50px;
+  stroke: #0031ff;
+}
+
+.svg-pi-10 .svg-pi-track {
+  stroke: #00bdfd;
+}
+
+.svg-pi-10 .svg-pi-track,
+.svg-pi-10 .svg-pi-indicator {
+  stroke-width: 10px;
+}
 
 
 .btn-gradient {
@@ -108,7 +143,7 @@ body {
   color: #25D0C7FF;
   background-clip: text;
   -webkit-background-clip: text;
-  text-fill-color: transparent;
+
   -webkit-text-fill-color: transparent;
   display: block;
 
@@ -117,7 +152,7 @@ body {
   @apply  text-[14px]  xl:text-lg md:text-base   ms:text-[12px] overflow_line_two   ;
 }
 .shadow_custom{
-  box-shadow: 0px 0px 7px rgba(255,255,255,.3);
+  box-shadow: 0 0 7px rgba(255,255,255,.3);
   transition: .3s ease-in-out;
   &:hover{
     box-shadow: inset 0 0 6px rgba(255,255,255,.3) ;
