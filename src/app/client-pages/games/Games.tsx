@@ -31,6 +31,7 @@ export default function Games() {
 
   const lengthData = data?.pages.slice(-1)[0];
   const { typeGamesCard } = useTypedSelector((state) => state.cardType);
+
   return (
     <>
       <div className="">
