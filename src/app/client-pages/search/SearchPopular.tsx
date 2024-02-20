@@ -1,11 +1,10 @@
 'use client';
 
-import { useInfiniteQuery, useQuery } from '@tanstack/react-query';
+import { useInfiniteQuery } from '@tanstack/react-query';
 import { QuerySearch } from '@/app/query/query-search';
-import { QueryGames } from '@/app/query/query-games';
 import Card from '@/app/components/card/card-one/Card';
 import Loading from '@/app/components/loading/Loading';
-import React from 'react';
+
 import InfiniteScroll from 'react-infinite-scroll-component';
 
 export default function SearchPopular() {
