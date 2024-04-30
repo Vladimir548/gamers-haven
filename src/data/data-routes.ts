@@ -44,6 +44,13 @@ export const ROUTES: IRoutes[] = [
     iconsActive: BiSolidJoystick,
   },
   {
+    id: 6,
+    name: 'Top 100',
+    link: '/games/top-100',
+    icons: BiCrown,
+    iconsActive: BiSolidCrown,
+  },
+  {
     id: 3,
     name: 'Popular',
     link: '/games/popular',
@@ -64,13 +71,7 @@ export const ROUTES: IRoutes[] = [
     icons: BsClock,
     iconsActive: BsClockFill,
   },
-  {
-    id: 6,
-    name: 'Top 100',
-    link: '/games/top-100',
-    icons: BiCrown,
-    iconsActive: BiSolidCrown,
-  },
+
   {
     id: 7,
     name: 'Events',
