@@ -34,7 +34,7 @@ const AuthForm = () => {
       reset();
       push('/profile');
       toast.success('Success');
-      console.log('dfdfdf');
+
       await queryClient.invalidateQueries({ queryKey: ['get-current-user'] });
     },
     onError(err) {
